@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import java.net.URL?>
+
+<VBox spacing="20.0" styleClass="content-pane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ReportsAnalyticsController">
+    <stylesheets>
+        <URL value="@/css/hr_dashboard_styles.css" />
+    </stylesheets>
+    
+    <padding><Insets top="20" right="30" bottom="20" left="30"/></padding>
+
+    <HBox alignment="CENTER_LEFT" spacing="15">
+        <VBox>
+            <Label text="Organizational Reports" styleClass="view-title" style="-fx-font-size: 22px; -fx-font-weight: bold;" />
+            <Label text="Generate and download official HR documents" style="-fx-text-fill: #64748b;" />
+        </VBox>
+    </HBox>
+
+    <GridPane hgap="15" vgap="15">
+        <columnConstraints>
+            <ColumnConstraints percentWidth="25" /><ColumnConstraints percentWidth="25" />
+            <ColumnConstraints percentWidth="25" /><ColumnConstraints percentWidth="25" />
+        </columnConstraints>
+
+        <VBox styleClass="report-card" spacing="10" GridPane.columnIndex="0">
+            <Label text="Staff Directory" styleClass="card-header-mini" />
+            <HBox spacing="8">
+                <Button text="View" onAction="#loadEmployeeReport" HBox.hgrow="ALWAYS" maxWidth="Infinity" styleClass="action-btn-primary-mini" />
+                <Button text="PDF" onAction="#downloadEmployeePDF" style="-fx-background-color: #ef4444; -fx-text-fill: white;" />
+            </HBox>
+        </VBox>
+
+        <VBox styleClass="report-card" spacing="10" GridPane.columnIndex="1">
+            <Label text="Leave Summary" styleClass="card-header-mini" />
+            <HBox spacing="8">
+                <Button text="View" onAction="#loadLeaveReport" HBox.hgrow="ALWAYS" maxWidth="Infinity" styleClass="action-btn-primary-mini" />
+                <Button text="PDF" onAction="#downloadLeavePDF" style="-fx-background-color: #ef4444; -fx-text-fill: white;" />
+            </HBox>
+        </VBox>
+
+        <VBox styleClass="report-card" spacing="10" GridPane.columnIndex="2">
+            <Label text="Attendance" styleClass="card-header-mini" />
+            <HBox spacing="8">
+                <Button text="View" onAction="#loadAttendanceReport" HBox.hgrow="ALWAYS" maxWidth="Infinity" styleClass="action-btn-primary-mini" />
+                <Button text="PDF" onAction="#downloadAttendancePDF" style="-fx-background-color: #ef4444; -fx-text-fill: white;" />
+            </HBox>
+        </VBox>
+
+        <VBox styleClass="report-card" spacing="10" GridPane.columnIndex="3">
+            <Label text="Bank Requests" styleClass="card-header-mini" />
+            <HBox spacing="8">
+                <Button text="View" onAction="#loadRequestReport" HBox.hgrow="ALWAYS" maxWidth="Infinity" styleClass="action-btn-primary-mini" />
+                <Button text="PDF" onAction="#downloadRequestPDF" style="-fx-background-color: #ef4444; -fx-text-fill: white;" />
+            </HBox>
+        </VBox>
+    </GridPane>
+
+    <VBox spacing="10" VBox.vgrow="ALWAYS" styleClass="glass-panel-compact" style="-fx-background-color: #f8fafc; -fx-padding: 15; -fx-background-radius: 10;">
+        <HBox alignment="CENTER_LEFT">
+            <Label fx:id="lblReportTitle" text="No Report Selected" styleClass="panel-header-mini" style="-fx-font-weight: bold;" />
+            <Region HBox.hgrow="ALWAYS" />
+            <Label fx:id="lblRecordCount" text="Records: 0" style="-fx-text-fill: #94a3b8; -fx-font-size: 12px;" />
+        </HBox>
+        
+        <StackPane fx:id="reportContentArea" VBox.vgrow="ALWAYS" />
+    </VBox>
+</VBox>

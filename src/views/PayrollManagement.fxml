@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controllers.PayrollController"
+            prefWidth="900" prefHeight="600">
+
+    <top>
+        <HBox spacing="10" style="-fx-background-color: #2d3436;">
+             <padding>
+                 <Insets top="15" right="15" bottom="15" left="15"/>
+             </padding>
+            <Label text="Payroll Management"
+                   style="-fx-text-fill: white; -fx-font-size: 20px; -fx-font-weight: bold;"/>
+            <Pane HBox.hgrow="ALWAYS"/>
+            <Button text="Generate Payroll"
+                    onAction="#onGeneratePayroll"
+                    style="-fx-background-color: #0984e3; -fx-text-fill: white; -fx-padding: 8 20;"/>
+        </HBox>
+    </top>
+
+    <center>
+        <VBox spacing="20">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+
+            <HBox spacing="15">
+                <VBox spacing="5">
+                    <Label text="Select Employee"/>
+                    <ComboBox fx:id="employeeCombo" prefWidth="250"/>
+                </VBox>
+
+                <VBox spacing="5">
+                    <Label text="Select Month"/>
+                    <DatePicker fx:id="payrollMonth" prefWidth="200"/>
+                </VBox>
+            </HBox>
+
+            <GridPane hgap="20" vgap="15">
+                <columnConstraints>
+                    <ColumnConstraints percentWidth="50"/>
+                    <ColumnConstraints percentWidth="50"/>
+                </columnConstraints>
+
+                <Label text="Basic Salary:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                <TextField fx:id="txtBasicSalary" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+                <Label text="Allowances:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                <TextField fx:id="txtAllowance" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+                <Label text="Deductions:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                <TextField fx:id="txtDeductions" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+            </GridPane>
+
+            <Button text="Calculate Net Salary"
+                    onAction="#onCalculateNetSalary"
+                    style="-fx-background-color: #00b894; -fx-text-fill: white; -fx-padding: 10 20;"/>
+
+            <Label fx:id="lblNetSalary"
+                   style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #2d3436;"
+                   text="Net Salary: 0.00"/>
+        </VBox>
+    </center>
+
+</BorderPane>

@@ -1,0 +1,129 @@
+/* DARK SIDEBAR THEME */
+.sidebar-dark {
+    -fx-background-color: #1e293b; /* Deep Slate - Definitely NOT white */
+    -fx-border-color: #0f172a;
+    -fx-border-width: 0 1 0 0;
+}
+
+.sidebar-name-small {
+    -fx-text-fill: #f8fafc;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+}
+
+.sidebar-status-mini {
+    -fx-text-fill: #94a3b8;
+    -fx-font-size: 10px;
+}
+
+/* MINIMIZED NAVIGATION */
+.nav-item-mini {
+    -fx-background-color: transparent;
+    -fx-text-fill: #94a3b8;
+    -fx-padding: 8 12;
+    -fx-font-size: 13px;
+    -fx-cursor: hand;
+    -fx-alignment: CENTER_LEFT;
+}
+
+.nav-item-mini:hover {
+    -fx-background-color: #334155;
+    -fx-text-fill: white;
+}
+
+.nav-item-active {
+    -fx-background-color: #3b82f6;
+    -fx-text-fill: white;
+    -fx-background-radius: 4;
+}
+
+/* COMPACT COMPONENTS */
+.top-nav-compact {
+    -fx-background-color: white;
+    -fx-border-color: #e2e8f0;
+    -fx-border-width: 0 0 1 0;
+}
+
+.welcome-main-mini {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1e293b;
+}
+
+.stat-card-mini {
+    -fx-padding: 10 15;
+    -fx-background-radius: 8;
+}
+
+.stat-label-mini { -fx-text-fill: rgba(255,255,255,0.8); -fx-font-size: 11px; }
+.stat-value-mini { -fx-text-fill: white; -fx-font-size: 20px; -fx-font-weight: bold; }
+
+.glass-panel-compact {
+    -fx-background-color: white;
+    -fx-background-radius: 10;
+    -fx-padding: 12;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.04), 5, 0, 0, 2);
+}
+
+.panel-header-mini {
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #475569;
+}
+
+.logout-btn-mini {
+    -fx-background-color: #475569;
+    -fx-text-fill: white;
+    -fx-font-size: 12px;
+    -fx-padding: 8;
+    -fx-background-radius: 4;
+}
+
+.logout-btn-mini:hover { -fx-background-color: #ef4444; }
+
+/* UTILITY BUTTONS */
+.utility-btn-mini {
+    -fx-background-color: #f1f5f9;
+    -fx-font-size: 11px;
+    -fx-padding: 5 10;
+    -fx-background-radius: 15;
+}
+
+.action-btn-compact {
+    -fx-background-color: #3b82f6;
+    -fx-text-fill: white;
+    -fx-font-size: 11px;
+    -fx-padding: 5 12;
+    -fx-font-weight: bold;
+}
+/* Report Cards Layout */
+.report-card {
+    -fx-background-color: white;
+    -fx-padding: 20;
+    -fx-background-radius: 12;
+    -fx-border-color: #e2e8f0;
+    -fx-border-width: 1;
+    -fx-spacing: 10;
+}
+
+.report-card:hover {
+    -fx-effect: dropshadow(three-pass-box, rgba(59, 130, 246, 0.1), 10, 0, 0, 5);
+    -fx-border-color: #3b82f6;
+}
+
+.card-header-mini {
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1e293b;
+}
+
+.card-desc {
+    -fx-font-size: 12px;
+    -fx-text-fill: #64748b;
+    -fx-min-height: 40;
+}
+
+.date-picker-mini .text-field {
+    -fx-background-color: #f1f5f9;
+    -fx-font-size: 11px;
+}

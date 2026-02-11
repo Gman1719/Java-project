@@ -1,0 +1,254 @@
+/* login_styles.css - Teal/Cyan Theme (JavaFX Compatible) */
+
+/* ===== ROOT STYLES & VARIABLES ===== */
+/* Note: JavaFX CSS does not support W3C variables or :root selector like this. 
+   These variables are purely descriptive here and won't function dynamically. 
+   We apply the colors directly below.
+*/
+.root {
+    -fx-font-family: "Segoe UI", "Arial", sans-serif;
+    /* -fx-primary-color: #044f59; */
+}
+
+/* ===== BACKGROUND STYLES (Using Option 3: Water Surface) ===== */
+.background-style {
+    /* Fixed for compatibility: Removed complex background sizing/animation attributes */
+    -fx-background-color: linear-gradient(to bottom, #044f59, #0a6c78, #044f59);
+}
+
+/* ===== GLASS CARD STYLE (Corrected for JavaFX) ===== */
+.login-card-style { /* Renamed to match FXML usage */
+    /* -fx-backdrop-filter: blur(15px); <-- REMOVED: UNSUPPORTED */
+    -fx-background-color: rgba(255, 255, 255, 0.95); /* Simulate glass effect with high opacity white */
+    -fx-border-color: rgba(255, 255, 255, 0.5); 
+    -fx-border-width: 1.5px;
+    -fx-border-radius: 16px;
+    -fx-effect: dropshadow(gaussian, rgba(4, 79, 89, 0.25), 30, 0, 0, 5);
+    -fx-padding: 40px;
+    -fx-background-radius: 16px;
+}
+
+.login-card-style:hover {
+    -fx-background-color: rgba(255, 255, 255, 1.0);
+    -fx-effect: dropshadow(gaussian, rgba(4, 79, 89, 0.35), 35, 0, 0, 8);
+    -fx-border-color: rgba(255, 255, 255, 0.6);
+}
+
+/* ===== TITLE STYLES ===== */
+.title-style {
+    /* Use standard text fill */
+    -fx-text-fill: #044f59; 
+    -fx-font-size: 32px;
+    -fx-font-weight: bold; /* 800 is not a standard JavaFX weight, use 'bold' */
+    -fx-alignment: center;
+    -fx-padding: 0 0 15px 0;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 0, 0, 0, 1); /* Subtle shadow for text */
+}
+
+/* Removed unsupported .title-style .text stroke properties */
+
+/* ===== LABEL STYLES ===== */
+.label-style {
+    -fx-text-fill: #2c3e50;
+    -fx-font-size: 14px;
+    -fx-font-weight: 600;
+    -fx-padding: 0 0 5px 3px; /* Reduced bottom padding */
+}
+
+/* ===== TEXT FIELD STYLES (Applies to PasswordField as well via separate selector) ===== */
+.text-field-style {
+    -fx-background-color: #f8f9fa;
+    -fx-background-radius: 10px;
+    -fx-border-color: #bdc3c7;
+    -fx-border-radius: 10px;
+    -fx-border-width: 1.5px;
+    -fx-padding: 10px 15px; /* Adjusted padding for better fit */
+    -fx-font-size: 14px;
+    -fx-prompt-text-fill: #7f8c8d;
+    -fx-pref-height: 48px;
+    -fx-effect: innershadow(gaussian, rgba(0, 0, 0, 0.03), 3, 0, 0, 0);
+}
+
+.text-field-style:focused {
+    -fx-background-color: white;
+    -fx-border-color: #044f59;
+    -fx-border-width: 2.5px;
+    -fx-effect: dropshadow(gaussian, rgba(4, 79, 89, 0.2), 12, 0, 0, 0);
+    -fx-prompt-text-fill: #95a5a6;
+}
+
+.text-field-style:hover {
+    -fx-border-color: #95a5a6;
+    -fx-background-color: #ffffff;
+}
+
+/* ===== PASSWORD FIELD STYLES (Linked to FXML field) ===== */
+.password-field {
+    -fx-background-color: #f8f9fa;
+    -fx-background-radius: 10px;
+    -fx-border-color: #bdc3c7;
+    -fx-border-radius: 10px;
+    -fx-border-width: 1.5px;
+    -fx-padding: 10px 15px; /* Adjusted padding for better fit */
+    -fx-font-size: 14px;
+    -fx-prompt-text-fill: #7f8c8d;
+    -fx-pref-height: 48px;
+}
+
+.password-field:focused {
+    -fx-background-color: white;
+    -fx-border-color: #044f59;
+    -fx-border-width: 2.5px;
+    -fx-effect: dropshadow(gaussian, rgba(4, 79, 89, 0.2), 12, 0, 0, 0);
+}
+
+/* Removed unsupported .toggle-password */
+
+
+/* ===== COMBO BOX STYLES (Linked to FXML field) ===== */
+.combo-box-style {
+    -fx-background-color: #f8f9fa;
+    -fx-background-radius: 10px;
+    -fx-border-color: #bdc3c7;
+    -fx-border-radius: 10px;
+    -fx-border-width: 1.5px;
+    -fx-padding: 0;
+    -fx-font-size: 14px;
+    -fx-pref-height: 48px;
+}
+
+/* Target the base area of the combo box */
+.combo-box-base {
+    -fx-padding: 10px 15px; /* Ensure text is centered */
+    -fx-background-radius: 10px;
+}
+
+.combo-box-style .arrow-button {
+    -fx-background-color: linear-gradient(to bottom, #044f59, #0a6c78);
+    -fx-background-radius: 0 10px 10px 0;
+    -fx-padding: 0 15px;
+}
+
+.combo-box-style .arrow {
+    -fx-background-color: white;
+    -fx-shape: "M 0 0 L 4 4 L 8 0 Z";
+}
+
+.combo-box-style .list-cell {
+    -fx-background-color: white;
+    -fx-text-fill: #2c3e50;
+    -fx-padding: 12px 18px;
+    -fx-font-size: 14px;
+}
+
+.combo-box-style .list-cell:hover {
+    -fx-background-color: #f0f8ff;
+    -fx-text-fill: #044f59;
+    -fx-font-weight: 600;
+}
+
+.combo-box-style .list-cell:selected {
+    -fx-background-color: #044f59;
+    -fx-text-fill: white;
+}
+
+.combo-box-style .list-view {
+    -fx-background-color: white;
+    -fx-background-radius: 8px;
+    -fx-border-color: #bdc3c7;
+    -fx-border-radius: 8px;
+    -fx-effect: dropshadow(gaussian, rgba(4, 79, 89, 0.15), 10, 0, 0, 0);
+}
+
+.combo-box-style:focused {
+    -fx-border-color: #044f59;
+    -fx-border-width: 2.5px;
+}
+
+/* ===== BUTTON STYLES ===== */
+.button-primary-style {
+    -fx-background-color: linear-gradient(to right, #044f59, #0a6c78);
+    -fx-background-radius: 12px;
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-padding: 16px 35px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(4, 79, 89, 0.4), 15, 0, 0, 4);
+    -fx-pref-height: 52px;
+    -fx-alignment: center;
+    -fx-border-radius: 12px;
+    -fx-border-width: 0;
+    /* Removed unsupported -fx-letter-spacing and text-alignment on Button */
+}
+
+.button-primary-style:hover {
+    -fx-background-color: linear-gradient(to right, #0a6c78, #044f59);
+    -fx-effect: dropshadow(gaussian, rgba(4, 79, 89, 0.6), 20, 0, 0, 6);
+    /* Removed unsupported scale and translate effects */
+}
+
+.button-primary-style:pressed {
+    -fx-background-color: linear-gradient(to right, #033940, #044f59);
+    -fx-effect: dropshadow(gaussian, rgba(4, 79, 89, 0.3), 10, 0, 0, 2);
+    /* Removed unsupported translate effects */
+}
+
+.button-primary-style:focused {
+    -fx-effect: dropshadow(gaussian, rgba(4, 79, 89, 0.6), 20, 0, 0, 0);
+    -fx-border-color: rgba(255, 255, 255, 0.5);
+    -fx-border-width: 2px;
+}
+
+/* Removed unsupported shimmer and pulse animations */
+
+/* ===== SEPARATOR STYLES ===== */
+.separator {
+    -fx-padding: 10px 0;
+}
+
+.separator .line {
+    -fx-border-color: linear-gradient(to right, transparent, #044f59, transparent);
+    -fx-border-width: 1.5px;
+    -fx-border-style: solid;
+    -fx-border-radius: 2px;
+}
+
+/* Removed unsupported transition, animation, and media queries blocks */
+
+/* --- Cleaned up miscellaneous styles --- */
+
+.error-field {
+    -fx-border-color: #e74c3c !important;
+    -fx-border-width: 2.5px !important;
+    -fx-effect: dropshadow(gaussian, rgba(231, 76, 60, 0.2), 10, 0, 0, 0);
+    -fx-background-color: #fff5f5;
+}
+
+/* ... include other necessary styles from your original file,
+   like .error-label, .success-field, .check-box, etc.,
+   making sure they don't contain unsupported properties.
+*/
+
+/* Example cleanup for check-box: */
+.check-box {
+    -fx-text-fill: #2c3e50;
+}
+
+.check-box .box {
+    -fx-background-color: white;
+    -fx-border-color: #bdc3c7;
+    -fx-border-radius: 4px;
+}
+
+.check-box:selected .mark {
+    -fx-background-color: #044f59;
+}
+
+.check-box:selected .box {
+    -fx-border-color: #044f59;
+    -fx-background-color: #f0f8ff;
+}
+
+/* Ensure the `login-card-style` class is used in your FXML: */
+/* Change: <VBox ... styleClass="login-card-style"> */

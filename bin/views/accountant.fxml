@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import java.net.URL?>
+<?import javafx.scene.shape.Circle?>
+
+<BorderPane fx:id="mainPane" prefHeight="900.0" prefWidth="1300.0" styleClass="root-pane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.PayrollOfficerController">
+    
+    <stylesheets>
+        <URL value="@/css/payroll_styles.css" />
+    </stylesheets>
+
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="20" styleClass="top-navbar" prefHeight="60">
+            <padding><Insets left="20" right="20"/></padding>
+            <Label text="PAYROLL CORE" styleClass="brand-logo"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            
+            <StackPane styleClass="notification-container" onMouseClicked="#showNotifications">
+                <Button text="🔔" styleClass="icon-button"/>
+                <Circle radius="8" fill="red" StackPane.alignment="TOP_RIGHT" translateX="-5" translateY="5"/>
+                <Label text="3" style="-fx-text-fill: white; -fx-font-size: 10px;" StackPane.alignment="TOP_RIGHT" translateX="-5" translateY="5"/>
+            </StackPane>
+            
+            <Separator orientation="VERTICAL" maxHeight="30"/>
+            <Label fx:id="lblSystemDate" text="Dec 22, 2025" styleClass="top-date"/>
+        </HBox>
+    </top>
+
+    <left>
+        <VBox spacing="10" styleClass="sidebar" prefWidth="240">
+            <padding><Insets top="20" right="15" bottom="20" left="15"/></padding>
+            
+            <VBox alignment="CENTER" spacing="5" style="-fx-padding: 0 0 20 0;">
+                <Label fx:id="lblOfficerName" text="Officer Name" styleClass="sidebar-name-label"/>
+                <Label text="Authorized Payroll Officer" styleClass="sidebar-role-label"/>
+            </VBox>
+
+            <Separator/>
+
+            <Button text="Dashboard" onAction="#showDashboard" maxWidth="Infinity" styleClass="nav-button-active"/>
+            <Button text="Run Payroll" onAction="#switchToRunTab" maxWidth="Infinity" styleClass="nav-button"/>
+            <Button text="Salary Structures" onAction="#showSalaryStructures" maxWidth="Infinity" styleClass="nav-button"/>
+            <Button text="Tax &amp; Settings" onAction="#showTaxSettings" maxWidth="Infinity" styleClass="nav-button"/>
+            <Separator/>
+            <Button text="Reports &amp; Archive" onAction="#showAuditLogs" maxWidth="Infinity" styleClass="nav-button"/>
+            
+            <Region VBox.vgrow="ALWAYS"/>
+            <Button text="Logout" onAction="#handleLogout" maxWidth="Infinity" styleClass="logout-button"/>
+        </VBox>
+    </left>
+
+    <center>
+        <VBox spacing="20" styleClass="main-content">
+            <padding><Insets top="20" right="25" bottom="20" left="25"/></padding>
+
+            <HBox spacing="20">
+                <VBox styleClass="stat-card" HBox.hgrow="ALWAYS">
+                    <Label text="Total Personnel" styleClass="stat-label"/>
+                    <Label fx:id="lblTotalEmployees" text="0" styleClass="stat-value"/>
+                </VBox>
+                <VBox styleClass="stat-card-warning" HBox.hgrow="ALWAYS">
+                    <Label text="Pending Approval" styleClass="stat-label"/>
+                    <Label fx:id="lblPendingCount" text="0" styleClass="stat-value-warning"/>
+                </VBox>
+                <VBox styleClass="stat-card-error" HBox.hgrow="ALWAYS">
+                    <Label text="Attendance Flags" styleClass="stat-label"/>
+                    <Label fx:id="lblAttendanceErrors" text="0" styleClass="stat-value-error"/>
+                </VBox>
+                <VBox styleClass="stat-card-success" HBox.hgrow="ALWAYS">
+                    <Label text="Total Payout" styleClass="stat-label"/>
+                    <Label fx:id="lblTotalPayout" text="0.00" styleClass="stat-value-success"/>
+                </VBox>
+            </HBox>
+
+            <TabPane fx:id="payrollTabPane" VBox.vgrow="ALWAYS" tabClosingPolicy="UNAVAILABLE" styleClass="modern-tab-pane">
+                <Tab text="Run Payroll">
+                    <VBox spacing="15" style="-fx-padding: 20;">
+                        <HBox spacing="15" alignment="CENTER_LEFT">
+                            <ComboBox fx:id="comboMonth" prefWidth="120" promptText="Month"/>
+                            <ComboBox fx:id="comboYear" prefWidth="100" promptText="Year"/>
+                            <Button text="Fetch Data" onAction="#loadPayrollData" styleClass="action-button-primary"/>
+                            <Separator orientation="VERTICAL" prefHeight="30"/>
+                            <Button text="Batch Generate" onAction="#handleBatchGenerate" styleClass="operation-button"/>
+                            <Button text="Lock Month" onAction="#handleLockMonth" styleClass="operation-button-secure"/>
+                            <Region HBox.hgrow="ALWAYS"/>
+                            <MenuButton text="Export As...">
+                                <items>
+                                    <MenuItem text="Export to Excel (.xlsx)" onAction="#exportExcel"/>
+                                    <MenuItem text="Export to PDF (.pdf)" onAction="#exportPDF"/>
+                                </items>
+                            </MenuButton>
+                        </HBox>
+
+                        <TableView fx:id="tblPayroll" VBox.vgrow="ALWAYS" styleClass="payroll-table">
+                            <columns>
+                                <TableColumn fx:id="colEmpName" text="Employee" prefWidth="180"/>
+                                <TableColumn fx:id="colBaseSalary" text="Base" prefWidth="100"/>
+                                <TableColumn fx:id="colAllowances" text="Allowances" prefWidth="100"/>
+                                <TableColumn fx:id="colDeductions" text="Deductions" prefWidth="100"/>
+                                <TableColumn fx:id="colNetSalary" text="Net Pay" prefWidth="120"/>
+                                <TableColumn fx:id="colStatus" text="Status" prefWidth="100"/>
+                                <TableColumn fx:id="colActions" text="Quick Actions" prefWidth="150"/>
+                            </columns>
+                        </TableView>
+                    </VBox>
+                </Tab>
+
+                <Tab text="Structure Editor">
+                    <HBox spacing="0" VBox.vgrow="ALWAYS">
+                        <VBox spacing="10" prefWidth="300" style="-fx-background-color: #f8f9fa; -fx-padding: 15;">
+                            <TextField fx:id="searchEmployee" promptText="Filter Employee List..."/>
+                            <ListView fx:id="listEmployees" VBox.vgrow="ALWAYS"/>
+                        </VBox>
+
+                        <VBox spacing="20" HBox.hgrow="ALWAYS" style="-fx-padding: 25;">
+                            <Label text="Modify Earnings &amp; Deductions" styleClass="section-header"/>
+                            <GridPane hgap="30" vgap="20">
+                                <Label text="Base Salary (Fixed):" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                                <TextField fx:id="txtBaseSalary" editable="false" styleClass="disabled-field" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                                
+                                <Label text="Regular Allowances:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                                <TextField fx:id="txtAllowances" onKeyReleased="#handleLiveUpdate" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                                
+                                <Label text="Performance Bonus:" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+                                <TextField fx:id="txtBonus" onKeyReleased="#handleLiveUpdate" GridPane.columnIndex="3" GridPane.rowIndex="1"/>
+                                
+                                <Label text="Tax Deductions:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                                <TextField fx:id="txtDeductions" onKeyReleased="#handleLiveUpdate" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                                
+                                <Label text="Insurance/Other:" GridPane.columnIndex="2" GridPane.rowIndex="2"/>
+                                <TextField fx:id="txtInsurance" onKeyReleased="#handleLiveUpdate" GridPane.columnIndex="3" GridPane.rowIndex="2"/>
+                            </GridPane>
+
+                            <HBox alignment="CENTER_RIGHT" spacing="20" styleClass="calculation-summary-box" prefHeight="60">
+                                <padding><Insets left="20" right="20" top="0" bottom="0"/></padding>
+                                <Label text="Estimated Net Payout: " style="-fx-font-size: 16px;"/>
+                                <Label fx:id="lblLiveNetPreview" text="0.00" styleClass="net-highlight-large"/>
+                            </HBox>
+
+                            <HBox spacing="15" alignment="CENTER_RIGHT">
+                                <Button text="Reset Changes" onAction="#handleReset" styleClass="button-secondary"/>
+                                <Button text="Calculate &amp; Save" onAction="#handleSaveStructure" styleClass="button-primary"/>
+                            </HBox>
+                        </VBox>
+                    </HBox>
+                </Tab>
+
+                <Tab text="Tax &amp; Global Rules">
+                    <VBox spacing="20" style="-fx-padding: 30;">
+                        <Label text="Global Payroll Configuration" styleClass="section-header"/>
+                        <GridPane hgap="40" vgap="15" maxWidth="600">
+                            <Label text="Standard Income Tax (%):" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                            <TextField fx:id="cfgTaxRate" text="15.0" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                            
+                            <Label text="Social Security Rate (%):" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                            <TextField fx:id="cfgSocialRate" text="5.0" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                            
+                            <Label text="Company Currency Symbol:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                            <TextField fx:id="cfgCurrency" text="USD" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                        </GridPane>
+                        <Button text="Update Global Settings" onAction="#saveGlobalSettings" styleClass="button-primary"/>
+                    </VBox>
+                </Tab>
+                
+                <Tab text="Archive">
+                    <VBox spacing="15" style="-fx-padding: 20;">
+                        <TableView fx:id="tblPayslipHistory" VBox.vgrow="ALWAYS">
+                            <columns>
+                                <TableColumn fx:id="colHistMonth" text="Month/Year" prefWidth="150"/>
+                                <TableColumn fx:id="colHistEmp" text="Employee" prefWidth="250"/>
+                                <TableColumn fx:id="colHistAmount" text="Amount" prefWidth="150"/>
+                            </columns>
+                        </TableView>
+                    </VBox>
+                </Tab>
+            </TabPane>
+        </VBox>
+    </center>
+
+    <bottom>
+        <HBox styleClass="footer-bar" alignment="CENTER_LEFT" spacing="20" prefHeight="40">
+            <padding><Insets left="20" right="20" top="0" bottom="0"/></padding>
+            <Circle radius="5" fill="#2ecc71"/>
+            <Label fx:id="lblStatusMessage" text="System Online - All databases synchronized"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Label fx:id="lblLastAudit" text="Session Node: PR-2025-X" styleClass="audit-text"/>
+        </HBox>
+    </bottom>
+</BorderPane>

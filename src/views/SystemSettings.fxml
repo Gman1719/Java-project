@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="850.0" prefWidth="1200.0" style="-fx-background-color: #F8FAFC;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SystemSettingsController">
+   
+   <top>
+      <HBox alignment="CENTER_LEFT" prefHeight="100.0" style="-fx-background-color: white; -fx-border-color: #E2E8F0; -fx-border-width: 0 0 1 0; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.02), 10, 0, 0, 5);">
+         <children>
+            <VBox alignment="CENTER_LEFT" spacing="5.0">
+               <children>
+                  <Label text="System Configuration" textFill="#0F172A">
+                     <font><Font name="Inter Bold" size="28.0" /></font>
+                  </Label>
+                  <HBox alignment="CENTER_LEFT" spacing="10">
+                     <Region style="-fx-background-color: #10B981; -fx-pref-width: 8; -fx-pref-height: 8; -fx-background-radius: 10;" />
+                     <Label fx:id="lblDBStatus" text="Database Status: Active" textFill="#64748B">
+                        <font><Font size="13.0" /></font>
+                     </Label>
+                  </HBox>
+               </children>
+               <HBox.margin><Insets left="40.0" /></HBox.margin>
+            </VBox>
+            <HBox alignment="CENTER_RIGHT" spacing="20.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <Button fx:id="btnSaveAll" mnemonicParsing="false" onAction="#handleSaveAllSettings" prefHeight="45.0" prefWidth="220.0" style="-fx-background-color: #4F46E5; -fx-text-fill: white; -fx-background-radius: 8; -fx-font-weight: bold; -fx-cursor: hand;" text="UPDATE ALL SETTINGS" />
+               </children>
+               <padding><Insets right="40.0" /></padding>
+            </HBox>
+         </children>
+      </HBox>
+   </top>
+
+   <center>
+      <TabPane fx:id="settingsTabPane" style="-fx-background-color: transparent; -fx-tab-min-width: 200; -fx-tab-min-height: 50;" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+         <tabs>
+            
+            <Tab text="COMPANY PROFILE">
+               <content>
+                  <ScrollPane fitToWidth="true" style="-fx-background-color: transparent; -fx-background: #F8FAFC;">
+                     <VBox spacing="30.0" style="-fx-padding: 40;">
+                        <VBox spacing="25" style="-fx-background-color: white; -fx-padding: 35; -fx-background-radius: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.04), 20, 0, 0, 10);">
+                           <VBox spacing="5">
+                              <Label style="-fx-font-weight: bold; -fx-font-size: 20px; -fx-text-fill: #1E293B;" text="Core Enterprise Settings" />
+                              <Label style="-fx-text-fill: #94A3B8; -fx-font-size: 13px;" text="Manage your company legal identity." />
+                           </VBox>
+                           <Separator opacity="0.4" />
+                           <GridPane hgap="40.0" vgap="30.0">
+                              <children>
+                                 <VBox spacing="8">
+                                    <Label text="LEGAL COMPANY NAME" textFill="#64748B" style="-fx-font-weight: bold; -fx-font-size: 11px;" />
+                                    <TextField fx:id="txtCompanyName" prefHeight="42.0" style="-fx-background-radius: 8; -fx-border-color: #E2E8F0;" />
+                                 </VBox>
+                                 <VBox spacing="8" GridPane.columnIndex="1">
+                                    <Label text="GLOBAL TAX RATE (%)" textFill="#64748B" style="-fx-font-weight: bold; -fx-font-size: 11px;" />
+                                    <TextField fx:id="txtGlobalTaxRate" prefHeight="42.0" style="-fx-background-radius: 8; -fx-border-color: #E2E8F0;" />
+                                 </VBox>
+                                 <VBox spacing="8" GridPane.rowIndex="1">
+                                    <Label text="DAILY WORKING HOURS" textFill="#64748B" style="-fx-font-weight: bold; -fx-font-size: 11px;" />
+                                    <TextField fx:id="txtWorkHoursPerDay" prefHeight="42.0" style="-fx-background-radius: 8; -fx-border-color: #E2E8F0;" />
+                                 </VBox>
+                              </children>
+                              <columnConstraints>
+                                 <ColumnConstraints hgrow="ALWAYS" percentWidth="50" />
+                                 <ColumnConstraints hgrow="ALWAYS" percentWidth="50" />
+                              </columnConstraints>
+                           </GridPane>
+                        </VBox>
+                     </VBox>
+                  </ScrollPane>
+               </content>
+            </Tab>
+
+            <Tab text="PAYROLL &amp; TAX">
+               <content>
+                  <ScrollPane fitToWidth="true" style="-fx-background-color: transparent; -fx-background: #F8FAFC;">
+                     <VBox spacing="30.0" style="-fx-padding: 40;">
+                        <HBox alignment="CENTER_LEFT" style="-fx-background-color: #FEF2F2; -fx-padding: 20; -fx-background-radius: 12; -fx-border-color: #FEE2E2;">
+                            <children>
+                               <VBox spacing="4" HBox.hgrow="ALWAYS">
+                                  <Label style="-fx-font-weight: bold; -fx-text-fill: #991B1B; -fx-font-size: 15;" text="Payroll Generation Lock" />
+                                  <Label style="-fx-text-fill: #B91C1C; -fx-font-size: 12;" text="Checking this prevents calculations during auditing cycles." />
+                               </VBox>
+                               <CheckBox fx:id="chkLockPayroll" style="-fx-scale-x: 1.3; -fx-scale-y: 1.3;" />
+                            </children>
+                        </HBox>
+                        <VBox spacing="25" style="-fx-background-color: white; -fx-padding: 35; -fx-background-radius: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.04), 20, 0, 0, 10);">
+                           <Label style="-fx-font-weight: bold; -fx-font-size: 18px; -fx-text-fill: #1E293B;" text="Rules &amp; Multipliers" />
+                           <HBox spacing="40">
+                              <VBox spacing="8" HBox.hgrow="ALWAYS">
+                                 <Label text="OVERTIME MULTIPLIER" textFill="#64748B" style="-fx-font-weight: bold; -fx-font-size: 11px;" />
+                                 <TextField fx:id="txtOvertimeMultiplier" prefHeight="42.0" style="-fx-background-radius: 8; -fx-border-color: #E2E8F0;" />
+                              </VBox>
+                              <VBox spacing="8" HBox.hgrow="ALWAYS">
+                                 <Label text="PAYROLL CYCLE" textFill="#64748B" style="-fx-font-weight: bold; -fx-font-size: 11px;" />
+                                 <ComboBox fx:id="comboPayrollCycle" maxWidth="Infinity" prefHeight="42.0" style="-fx-background-radius: 8; -fx-border-color: #E2E8F0;" />
+                              </VBox>
+                           </HBox>
+                        </VBox>
+                        <VBox spacing="25" style="-fx-background-color: white; -fx-padding: 35; -fx-background-radius: 15;">
+                           <HBox alignment="CENTER_LEFT">
+                              <Label style="-fx-font-weight: bold; -fx-font-size: 18px; -fx-text-fill: #1E293B;" text="Income Tax Brackets" />
+                              <Region HBox.hgrow="ALWAYS" />
+                              <Button onAction="#handleAddTaxBracket" style="-fx-background-color: #EEF2FF; -fx-text-fill: #4F46E5; -fx-background-radius: 6; -fx-font-weight: bold;" text="+ NEW BRACKET" />
+                           </HBox>
+                           <TableView fx:id="tblTaxBrackets" prefHeight="300.0">
+                              <columns>
+                                 <TableColumn fx:id="colMinSalary" prefWidth="180" text="Minimum Salary" />
+                                 <TableColumn fx:id="colMaxSalary" prefWidth="180" text="Maximum Salary" />
+                                 <TableColumn fx:id="colTaxRate" prefWidth="120" text="Rate (%)" />
+                                 <TableColumn fx:id="colTaxActions" prefWidth="150" text="Actions" />
+                              </columns>
+                              <columnResizePolicy><TableView fx:constant="CONSTRAINED_RESIZE_POLICY" /></columnResizePolicy>
+                           </TableView>
+                        </VBox>
+                     </VBox>
+                  </ScrollPane>
+               </content>
+            </Tab>
+
+            <Tab text="LEAVE POLICIES">
+               <content>
+                  <VBox spacing="30.0" style="-fx-padding: 40;">
+                     <VBox spacing="30" style="-fx-background-color: white; -fx-padding: 35; -fx-background-radius: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.04), 20, 0, 0, 10);">
+                        <Label style="-fx-font-weight: bold; -fx-font-size: 20px; -fx-text-fill: #1E293B;" text="Attendance &amp; Leave Rules" />
+                        <GridPane hgap="40" vgap="30">
+                           <children>
+                              <VBox spacing="8">
+                                 <Label text="LATE GRACE PERIOD (MINS)" textFill="#64748B" style="-fx-font-weight: bold; -fx-font-size: 11px;" />
+                                 <TextField fx:id="txtLateThreshold" prefHeight="42.0" style="-fx-background-radius: 8; -fx-border-color: #E2E8F0;" />
+                              </VBox>
+                              <VBox spacing="8" GridPane.columnIndex="1">
+                                 <Label text="MAX ANNUAL LEAVE DAYS" textFill="#64748B" style="-fx-font-weight: bold; -fx-font-size: 11px;" />
+                                 <TextField fx:id="txtAnnualLeaveLimit" prefHeight="42.0" style="-fx-background-radius: 8; -fx-border-color: #E2E8F0;" />
+                              </VBox>
+                              <HBox alignment="CENTER_LEFT" spacing="12" GridPane.rowIndex="1">
+                                 <CheckBox fx:id="chkApprovalRequired" style="-fx-scale-x: 1.2; -fx-scale-y: 1.2;" />
+                                 <Label text="Enable Request Auto-Approval" style="-fx-font-size: 14; -fx-text-fill: #334155;" />
+                              </HBox>
+                           </children>
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="ALWAYS" percentWidth="50" />
+                              <ColumnConstraints hgrow="ALWAYS" percentWidth="50" />
+                           </columnConstraints>
+                        </GridPane>
+                     </VBox>
+                  </VBox>
+               </content>
+            </Tab>
+
+            <Tab text="SECURITY &amp; LOGS">
+               <content>
+                  <VBox spacing="30.0" style="-fx-padding: 40;">
+                     <VBox spacing="30" style="-fx-background-color: white; -fx-padding: 35; -fx-background-radius: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.04), 20, 0, 0, 10);">
+                        <VBox spacing="5">
+                           <Label style="-fx-font-weight: bold; -fx-font-size: 20px; -fx-text-fill: #1E293B;" text="System Access Controls" />
+                           <Label style="-fx-text-fill: #94A3B8; -fx-font-size: 13px;" text="Define credential requirements and authentication security." />
+                        </VBox>
+                        <Separator opacity="0.4" />
+                        <GridPane hgap="40" vgap="30">
+                           <children>
+                              <VBox spacing="8">
+                                 <Label text="MINIMUM PASSWORD LENGTH" textFill="#64748B" style="-fx-font-weight: bold; -fx-font-size: 11px;" />
+                                 <TextField fx:id="txtMinPasswordLength" prefHeight="42.0" style="-fx-background-radius: 8; -fx-border-color: #E2E8F0;" />
+                              </VBox>
+                              <VBox spacing="8" GridPane.columnIndex="1">
+                                 <Label text="MAX LOGIN FAILURES" textFill="#64748B" style="-fx-font-weight: bold; -fx-font-size: 11px;" />
+                                 <TextField fx:id="txtMaxLoginAttempts" prefHeight="42.0" style="-fx-background-radius: 8; -fx-border-color: #E2E8F0;" />
+                              </VBox>
+                           </children>
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="ALWAYS" percentWidth="50" />
+                              <ColumnConstraints hgrow="ALWAYS" percentWidth="50" />
+                           </columnConstraints>
+                        </GridPane>
+                        </VBox>
+                  </VBox>
+               </content>
+            </Tab>
+         </tabs>
+      </TabPane>
+   </center>
+</BorderPane>

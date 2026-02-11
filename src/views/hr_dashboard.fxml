@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.shape.Circle?>
+<?import java.net.URL?>
+
+<BorderPane fx:id="mainBorderPane" prefHeight="850.0" prefWidth="1300.0" styleClass="root-pane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.HRDashboardController">
+
+    <stylesheets>
+        <URL value="@/css/hr_dashboard_styles.css" />
+    </stylesheets>
+
+    <left>
+        <VBox prefWidth="250.0" spacing="10" styleClass="sidebar"> 
+            <padding><Insets top="30.0" bottom="20.0" left="20.0" right="20.0" /></padding>
+            <children>
+                <VBox alignment="CENTER" spacing="12.0" styleClass="sidebar-profile">
+                    <StackPane>
+                        <Circle radius="38" styleClass="avatar-border" /> 
+                        <ImageView fx:id="imgProfile" fitWidth="65.0" fitHeight="65.0" styleClass="avatar-img" />
+                    </StackPane>
+                    <VBox alignment="CENTER">
+                        <Label fx:id="lblName" text="Loading..." styleClass="sidebar-name" />
+                        <Label fx:id="lblRole" text="HR Manager" styleClass="sidebar-status" />
+                    </VBox>
+                </VBox>
+
+                <Region prefHeight="20" />
+                
+                <VBox spacing="6">
+                    <Button fx:id="btnDashboardOverview" onAction="#showOverview" text="Dashboard" maxWidth="Infinity" styleClass="nav-item, nav-item-active" />
+                    <Button fx:id="btnEmployeeRecords" onAction="#loadEmployeeManagementView" text="Employees" maxWidth="Infinity" styleClass="nav-item" />
+                    <Button onAction="#loadLeaveManagementView" text="Leave &amp; Attendance" maxWidth="Infinity" styleClass="nav-item" />
+                    <Button onAction="#openPayrollWizard" text="Payroll Management" maxWidth="Infinity" styleClass="nav-item" />
+                    <Button onAction="#loadRequestsView" text="Requests" maxWidth="Infinity" styleClass="nav-item" />
+                    <Button onAction="#loadReportsView" text="Reports" maxWidth="Infinity" styleClass="nav-item" />
+                    </VBox>
+                
+                <Region VBox.vgrow="ALWAYS" />
+                
+                <Button onAction="#openProfile" text="My Profile" maxWidth="Infinity" styleClass="nav-item" />
+                <Button onAction="#handleLogout" text="Logout" maxWidth="Infinity" styleClass="logout-btn" />
+            </children>
+        </VBox>
+    </left>
+
+    <center>
+        <VBox spacing="0">
+            <HBox alignment="CENTER_LEFT" styleClass="top-nav" prefHeight="65">
+                <padding><Insets left="30.0" right="30.0" /></padding>
+                <VBox alignment="CENTER_LEFT">
+                    <Label text="MANAGEMENT SYSTEM" styleClass="welcome-sub" />
+                    <Label fx:id="lblCurrentViewTitle" text="Analytics Overview" styleClass="welcome-main" />
+                </VBox>
+                <Region HBox.hgrow="ALWAYS" />
+                <HBox spacing="10" alignment="CENTER">
+                    <Button onAction="#openAddEmployee" text="Add Employee" styleClass="action-btn-primary" />
+                    <Button onAction="#changePassword" text="Change Password" styleClass="icon-btn-text" />
+                    <Button onAction="#openNotifications" text="Notifications" styleClass="icon-btn-text" />
+                </HBox>
+            </HBox>
+
+            <ScrollPane fitToWidth="true" styleClass="content-scroll" VBox.vgrow="ALWAYS">
+                <StackPane fx:id="mainContentArea">
+                    <padding><Insets top="25.0" right="30.0" bottom="25.0" left="30.0" /></padding>
+                    
+                    <VBox fx:id="vboxDashboardOverview" spacing="25.0">
+                        <HBox spacing="20.0" alignment="CENTER">
+                            <VBox styleClass="stat-card, stat-blue" HBox.hgrow="ALWAYS">
+                                <Label text="Total Staff" styleClass="stat-label" />
+                                <Label fx:id="lblTotalEmployees" text="0" styleClass="stat-value" />
+                            </VBox>
+                            <VBox styleClass="stat-card, stat-purple" HBox.hgrow="ALWAYS">
+                                <Label text="Pending Requests" styleClass="stat-label" />
+                                <Label fx:id="lblPendingRequests" text="0" styleClass="stat-value" />
+                            </VBox>
+                            <VBox styleClass="stat-card, stat-orange" HBox.hgrow="ALWAYS">
+                                <Label text="New Hires" styleClass="stat-label" />
+                                <Label fx:id="lblNewHires" text="0" styleClass="stat-value" />
+                            </VBox>
+                            <VBox styleClass="stat-card, stat-green" HBox.hgrow="ALWAYS">
+                                <Label text="On Leave Today" styleClass="stat-label" />
+                                <Label fx:id="lblLeavesToday" text="0" styleClass="stat-value" />
+                            </VBox>
+                        </HBox>
+
+                        <HBox spacing="20.0">
+                            <VBox styleClass="glass-panel" HBox.hgrow="ALWAYS" prefHeight="350">
+                                <Label text="Staff Distribution" styleClass="panel-header" />
+                                <StackPane fx:id="chartDepartment" VBox.vgrow="ALWAYS" />
+                            </VBox>
+                            
+                            <VBox prefWidth="320.0" spacing="15" styleClass="glass-panel">
+                                <Label text="System Activity" styleClass="panel-header" />
+                                <ListView fx:id="listNotificationsPreview" VBox.vgrow="ALWAYS" styleClass="simple-list" />
+                                <Button onAction="#openNotifications" text="View All" maxWidth="Infinity" styleClass="quick-btn" />
+                            </VBox>
+                        </HBox>
+
+                        <VBox styleClass="glass-panel">
+                            <Label text="Recent Pending Requests" styleClass="panel-header" />
+                            <TableView fx:id="tblLatestRequests" prefHeight="250" styleClass="modern-table">
+                                <columns>
+                                    <TableColumn text="Type" />
+                                    <TableColumn text="Employee" />
+                                    <TableColumn text="Date" />
+                                    <TableColumn text="Details" />
+                                    <TableColumn text="Action" />
+                                </columns>
+                                <columnResizePolicy><TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/></columnResizePolicy>
+                            </TableView>
+                        </VBox>
+                    </VBox>
+                </StackPane>
+            </ScrollPane>
+        </VBox>
+    </center>
+</BorderPane>

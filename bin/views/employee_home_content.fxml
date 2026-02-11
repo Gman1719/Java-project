@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import java.net.URL?>
+
+<VBox fx:id="homeRoot" spacing="20.0" styleClass="main-content-vbox" 
+      xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+    
+    <padding>
+        <Insets top="20.0" right="20.0" bottom="20.0" left="20.0" />
+    </padding>
+
+    <HBox spacing="20.0" styleClass="dashboard-cards-row">
+        <VBox prefWidth="350.0" styleClass="info-card" HBox.hgrow="ALWAYS">
+            <Label text="Net Salary (This Month)" styleClass="card-title" />
+            <Label fx:id="lblNetSalary" text="\$0.00" styleClass="card-value-primary" />
+            <Button text="Download Payslip" onAction="#downloadPayslip" styleClass="card-action-button" />
+        </VBox>
+
+        <VBox prefWidth="350.0" styleClass="info-card" HBox.hgrow="ALWAYS">
+            <Label text="Available Leave Days" styleClass="card-title" />
+            <Label fx:id="lblAvailableLeaves" text="0 Days" styleClass="card-value-secondary" />
+            <Button text="Request Leave" onAction="#openLeaveRequest" styleClass="card-action-button-secondary" />
+        </VBox>
+
+        <VBox prefWidth="350.0" styleClass="info-card" HBox.hgrow="ALWAYS">
+            <Label text="Upcoming Pay Day" styleClass="card-title" />
+            <Label fx:id="lblPayDay" text="TBD" styleClass="card-value-tertiary" />
+            <Button text="View Calendar" onAction="#openCalendar" styleClass="card-action-button-tertiary" />
+        </VBox>
+    </HBox>
+
+    <HBox spacing="20.0" styleClass="dashboard-charts-row">
+        <VBox minHeight="300.0" styleClass="panel-container" HBox.hgrow="ALWAYS">
+            <Label text="Working Hours Summary" styleClass="panel-title" />
+            <StackPane fx:id="chartContainer" VBox.vgrow="ALWAYS" minHeight="250.0" />
+        </VBox>
+        
+        <VBox minHeight="300.0" prefWidth="350.0" styleClass="panel-container">
+            <Label text="Quick Actions" styleClass="panel-title" />
+            <Button text="View Full Payslip History" maxWidth="Infinity" styleClass="quick-action-button" onAction="#openPayslips" />
+            <Button text="View All Requests" maxWidth="Infinity" styleClass="quick-action-button" onAction="#openRequests" />
+            <Button text="Update Contact Info" maxWidth="Infinity" styleClass="quick-action-button" onAction="#openProfile" />
+            <Region VBox.vgrow="ALWAYS" />
+        </VBox>
+    </HBox>
+
+    <TabPane tabClosingPolicy="UNAVAILABLE" styleClass="history-tab-pane" VBox.vgrow="ALWAYS">
+        <tabs>
+            <Tab text="Attendance History">
+                <VBox spacing="10" style="-fx-padding:15;">
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <Label text="View Month:" />
+                        <DatePicker fx:id="dpAttendanceMonth" prefWidth="150.0" />
+                        <Button text="Load" onAction="#loadAttendanceData" />
+                    </HBox>
+                    <TableView fx:id="tblAttendance" VBox.vgrow="ALWAYS" minHeight="300.0" />
+                </VBox>
+            </Tab>
+            
+            <Tab text="Leave Request Status">
+                <VBox fx:id="leavePane" spacing="10" style="-fx-padding:15;"> 
+                    <TableView fx:id="tblLeaveRequests" VBox.vgrow="ALWAYS" minHeight="300.0" />
+                </VBox>
+            </Tab>
+            
+            <Tab text="Other Requests">
+                <VBox fx:id="requestsPane" spacing="10" style="-fx-padding:15;">
+                    <TableView fx:id="tblOtherRequests" VBox.vgrow="ALWAYS" minHeight="300.0" />
+                </VBox>
+            </Tab>
+        </tabs>
+    </TabPane>
+</VBox>

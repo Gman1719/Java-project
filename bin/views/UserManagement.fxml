@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns="http://javafx.com/javafx/8.0.171"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controllers.UserManagementController">
+
+    <top>
+        <HBox spacing="10" style="-fx-background-color: #2d3436; -fx-padding: 15;">
+            <Label text="User Management" style="-fx-text-fill: white; -fx-font-size: 20px; -fx-font-weight: bold;" />
+            <Pane HBox.hgrow="ALWAYS"/>
+            <Button text="Add User"
+                    onAction="#handleAddUser"
+                    style="-fx-background-color: #0984e3; -fx-text-fill: white; -fx-padding: 8 20; -fx-background-radius: 8;"/>
+        </HBox>
+    </top>
+
+    <center>
+        <VBox spacing="10">
+            <padding>
+                <Insets top="15" right="15" bottom="15" left="15"/>
+            </padding>
+            
+            <HBox spacing="10">
+                <TextField fx:id="txtSearch"
+                           promptText="Search users..."
+                           style="-fx-background-radius: 8; -fx-padding: 10; -fx-border-radius: 8; -fx-border-color: #b2bec3;" />
+                <Button text="Search" onAction="#handleSearch"
+                        style="-fx-background-color: #0984e3; -fx-text-fill: white; -fx-background-radius: 8; -fx-padding: 8 20;" />
+            </HBox>
+
+            <TableView fx:id="tblUsers" prefHeight="500" style="-fx-background-radius: 10;">
+                <columns>
+                    <TableColumn fx:id="colId" text="ID" prefWidth="70"/>
+                    <TableColumn fx:id="colName" text="Full Name" prefWidth="180"/>
+                    <TableColumn fx:id="colUsername" text="Username" prefWidth="120"/>
+                    <TableColumn fx:id="colRole" text="Role" prefWidth="100"/>
+                    <TableColumn fx:id="colEmail" text="Email" prefWidth="200"/>
+                    <TableColumn fx:id="colPhone" text="Phone" prefWidth="150"/>
+                    <TableColumn fx:id="colActions" text="Actions" prefWidth="150"/>
+                </columns>
+            </TableView>
+        </VBox>
+    </center>
+
+</BorderPane>

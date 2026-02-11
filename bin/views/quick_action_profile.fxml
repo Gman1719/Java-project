@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox alignment="TOP_CENTER" spacing="25.0" style="-fx-background-color: #ffffff; -fx-padding: 40; -fx-border-color: #ddd; -fx-border-radius: 8;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/21" fx:controller="controllers.HRProfileController">
+    <Label style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #1E3F66;" text="HR Admin Profile" />
+    <Separator />
+    <GridPane hgap="20" vgap="15">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="120.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="300.0" />
+        </columnConstraints>
+        <Label text="Full Name:" style="-fx-font-weight: bold;" GridPane.rowIndex="0" GridPane.columnIndex="0" />
+        <TextField fx:id="txtFullName" text="HR Admin User" style="-fx-background-color: #f0f0f0; -fx-border-radius: 4;" GridPane.rowIndex="0" GridPane.columnIndex="1" />
+        <Label text="Username:" style="-fx-font-weight: bold;" GridPane.rowIndex="1" GridPane.columnIndex="0" />
+        <TextField text="hr_admin" editable="false" style="-fx-background-color: #e9ecef; -fx-border-radius: 4;" GridPane.rowIndex="1" GridPane.columnIndex="1" />
+        <Label text="Email:" style="-fx-font-weight: bold;" GridPane.rowIndex="2" GridPane.columnIndex="0" />
+        <TextField fx:id="txtEmail" text="hr.admin@company.com" style="-fx-background-color: #f0f0f0; -fx-border-radius: 4;" GridPane.rowIndex="2" GridPane.columnIndex="1" />
+        <Label text="Phone:" style="-fx-font-weight: bold;" GridPane.rowIndex="3" GridPane.columnIndex="0" />
+        <TextField fx:id="txtPhone" promptText="Enter contact number" style="-fx-background-color: #f0f0f0; -fx-border-radius: 4;" GridPane.rowIndex="3" GridPane.columnIndex="1" />
+    </GridPane>
+    <HBox alignment="CENTER_RIGHT" spacing="10">
+        <Button text="Cancel" onAction="#handleCancel" style="-fx-background-color: #6c757d; -fx-text-fill: white; -fx-border-radius: 4; -fx-cursor: hand;" />
+        <Button text="Save Changes" onAction="#handleSave" style="-fx-background-color: #1E3F66; -fx-text-fill: white; -fx-border-radius: 4; -fx-font-weight: bold; -fx-cursor: hand;" />
+    </HBox>
+</VBox>

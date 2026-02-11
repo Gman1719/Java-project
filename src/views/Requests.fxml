@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controllers.RequestsController"
+            prefWidth="900" prefHeight="600">
+
+    <top>
+        <HBox spacing="10" style="-fx-background-color:#2d3436;">
+            <padding>
+                <Insets top="15" right="15" bottom="15" left="15" />
+            </padding>
+            <Label text="Employee Requests"
+                   style="-fx-text-fill:white; -fx-font-size:20px; -fx-font-weight:bold;"/>
+            <Pane HBox.hgrow="ALWAYS"/>
+            <Button text="Approve All" onAction="#onApproveAll"
+                    style="-fx-background-color:#00b894; -fx-text-fill:white;"/>
+            <Button text="Reject All" onAction="#onRejectAll"
+                    style="-fx-background-color:#d63031; -fx-text-fill:white;"/>
+        </HBox>
+    </top>
+
+    <center>
+        <VBox spacing="20">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20" />
+            </padding>
+
+            <HBox spacing="20">
+                <VBox spacing="5">
+                    <Label text="Filter by Employee:"/>
+                    <ComboBox fx:id="employeeFilter" prefWidth="200"/>
+                </VBox>
+
+                <VBox spacing="5">
+                    <Label text="Filter by Request Type:"/>
+                    <ComboBox fx:id="requestTypeFilter" prefWidth="200">
+                        <items>
+                            <FXCollections fx:factory="observableArrayList">
+                                <String fx:value="All"/>
+                                <String fx:value="Leave"/>
+                                <String fx:value="Salary Advance"/>
+                                <String fx:value="Other"/>
+                            </FXCollections>
+                        </items>
+                    </ComboBox>
+                </VBox>
+
+                <Button text="Apply Filters" onAction="#onFilter"
+                        style="-fx-background-color:#6c5ce7; -fx-text-fill:white; -fx-padding: 8 20;"/>
+            </HBox>
+
+            <TableView fx:id="requestsTable" prefHeight="400">
+                <columns>
+                    <TableColumn fx:id="colEmployee" text="Employee" prefWidth="180"/>
+                    <TableColumn fx:id="colType" text="Request Type" prefWidth="150"/>
+                    <TableColumn fx:id="colDate" text="Date" prefWidth="150"/>
+                    <TableColumn fx:id="colStatus" text="Status" prefWidth="120"/>
+                    <TableColumn fx:id="colRemarks" text="Remarks" prefWidth="300"/>
+                    <TableColumn fx:id="colActions" text="Actions" prefWidth="200"/>
+                </columns>
+            </TableView>
+
+        </VBox>
+    </center>
+
+</BorderPane>

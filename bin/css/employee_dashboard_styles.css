@@ -1,0 +1,136 @@
+/* Core Styling */
+.root-pane { -fx-background-color: #F1F5F9; }
+
+/* Side Navigation Bar */
+.sidebar {
+    -fx-background-color: linear-gradient(to bottom, #0F172A, #1E293B);
+    -fx-background-radius: 0 30 30 0;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 20, 0, 10, 0);
+}
+
+.sidebar-section-header {
+    -fx-text-fill: #64748B;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-padding: 10 0 5 10;
+}
+
+.profile-name-main { -fx-text-fill: white; -fx-font-size: 18px; -fx-font-weight: bold; }
+.profile-role-sub { -fx-text-fill: #38BDF8; -fx-font-size: 12px; }
+
+.nav-item {
+    -fx-background-color: transparent;
+    -fx-text-fill: #94A3B8;
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 12 15;
+    -fx-background-radius: 12;
+    -fx-cursor: hand;
+}
+
+.nav-item:hover {
+    -fx-background-color: rgba(255,255,255,0.05);
+    -fx-text-fill: white;
+}
+
+.nav-active {
+    -fx-background-color: linear-gradient(to right, #0EA5E9, #2563EB);
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+/* THE LOGOUT BUTTON */
+.logout-btn-modern {
+    -fx-background-color: linear-gradient(to right, #EF4444, #B91C1C);
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 12;
+    -fx-padding: 15;
+    -fx-effect: dropshadow(three-pass-box, rgba(239,68,68,0.4), 10, 0, 0, 5);
+    -fx-cursor: hand;
+}
+
+/* Stat Cards */
+.stat-card {
+    -fx-padding: 30;
+    -fx-background-radius: 20;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 15, 0, 0, 10);
+}
+.card-blue { -fx-background-color: linear-gradient(to right, #3B82F6, #1D4ED8); }
+.card-green { -fx-background-color: linear-gradient(to right, #10B981, #047857); }
+.card-orange { -fx-background-color: linear-gradient(to right, #F59E0B, #B45309); }
+
+.stat-card-label { -fx-text-fill: rgba(255,255,255,0.8); -fx-font-weight: bold; -fx-font-size: 12px; }
+.stat-card-value { -fx-text-fill: white; -fx-font-size: 36px; -fx-font-weight: bold; }
+.stat-card-btn {
+    -fx-background-color: rgba(255,255,255,0.2);
+    -fx-text-fill: white;
+    -fx-background-radius: 10;
+    -fx-font-weight: bold;
+}
+
+/* White Content Panels */
+.panel-white {
+    -fx-background-color: white;
+    -fx-background-radius: 20;
+    -fx-padding: 25;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.02), 15, 0, 0, 0);
+}
+
+.panel-title-text { -fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #1E293B; }
+/* THE OUTER CONTAINER */
+.data-section-container {
+    -fx-background-color: white;
+    -fx-background-radius: 20;
+    -fx-padding: 25;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 15, 0, 0, 8);
+}
+
+/* SECTION HEADER */
+.section-subtitle {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1e293b;
+    -fx-padding: 0 0 20 5;
+}
+
+/* THE TABLE (Clean SaaS Look) */
+.modern-table {
+    -fx-background-color: transparent;
+    -fx-border-color: #e2e8f0;
+    -fx-border-radius: 12;
+    -fx-background-radius: 12;
+}
+
+.modern-table .column-header-background {
+    -fx-background-color: #f8fafc; /* Light blueish grey header */
+}
+
+.modern-table .column-header {
+    -fx-text-fill: #64748b;
+    -fx-font-weight: bold;
+    -fx-padding: 12;
+}
+
+.modern-table .table-row-cell {
+    -fx-cell-size: 45;
+    -fx-border-color: #f1f5f9;
+    -fx-border-width: 0 0 1 0;
+}
+
+.modern-table .table-row-cell:hover {
+    -fx-background-color: #f1f5f9;
+}
+
+/* TABS */
+.history-tab-pane .tab {
+    -fx-background-color: #f1f5f9;
+    -fx-padding: 10 25;
+    -fx-background-radius: 8 8 0 0;
+}
+
+.history-tab-pane .tab:selected {
+    -fx-background-color: white;
+    -fx-text-fill: #3b82f6;
+    -fx-border-color: #3b82f6;
+    -fx-border-width: 0 0 3 0;
+}

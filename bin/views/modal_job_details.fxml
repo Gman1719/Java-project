@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import java.net.URL?>
+
+<VBox prefHeight="650.0" prefWidth="800.0" spacing="15.0" styleClass="modal-pane" 
+      xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" 
+      fx:controller="controllers.ModalController">
+    <stylesheets>
+        <URL value="@/css/hr_dashboard_styles.css" />
+    </stylesheets>
+    
+    <padding>
+        <Insets top="20.0" right="20.0" bottom="20.0" left="20.0" />
+    </padding>
+
+    <Label fx:id="lblModalTitle" text="Job Posting Details: Senior Software Engineer" styleClass="view-title" />
+    
+    <TabPane tabClosingPolicy="UNAVAILABLE">
+        
+        <Tab text="Details &amp; Requirements">
+            <ScrollPane fitToWidth="true">
+                <GridPane fx:id="jobDetailsPane" hgap="15.0" vgap="10.0">
+                    <padding><Insets top="15.0" right="15.0" bottom="15.0" left="15.0" /></padding>
+                    <columnConstraints>
+                        <ColumnConstraints minWidth="150.0" prefWidth="150.0" hgrow="NEVER" />
+                        <ColumnConstraints hgrow="ALWAYS" />
+                    </columnConstraints>
+
+                    <Label text="Job Title:" GridPane.rowIndex="0" GridPane.columnIndex="0" />
+                    <TextField fx:id="txtJobTitle" text="Senior Software Engineer" GridPane.rowIndex="0" GridPane.columnIndex="1" />
+                    
+                    <Label text="Department:" GridPane.rowIndex="1" GridPane.columnIndex="0" />
+                    <Label fx:id="lblDepartment" text="IT" styleClass="data-label" GridPane.rowIndex="1" GridPane.columnIndex="1" />
+
+                    <Label text="Status:" GridPane.rowIndex="2" GridPane.columnIndex="0" />
+                    <ComboBox fx:id="cmbStatus" value="Active" GridPane.rowIndex="2" GridPane.columnIndex="1" />
+
+                    <Label text="Description:" GridPane.rowIndex="3" GridPane.columnIndex="0" />
+                    <TextArea fx:id="txtJobDescription" prefHeight="150.0" text="Responsible for designing and implementing core backend services..." GridPane.rowIndex="3" GridPane.columnIndex="1" />
+                    
+                    <Label text="Date Posted:" GridPane.rowIndex="4" GridPane.columnIndex="0" />
+                    <Label fx:id="lblDatePosted" text="Dec 01, 2025" styleClass="data-label" GridPane.rowIndex="4" GridPane.columnIndex="1" />
+
+                    <Label text="Applicant Count:" GridPane.rowIndex="5" GridPane.columnIndex="0" />
+                    <Label fx:id="lblApplicantCount" text="15" styleClass="data-label" GridPane.rowIndex="5" GridPane.columnIndex="1" />
+                    
+                </GridPane>
+            </ScrollPane>
+        </Tab>
+        
+        <Tab text="Applicants (15)">
+            <TableView prefHeight="400.0">
+                <columns>
+                    <TableColumn text="Name" prefWidth="150.0" />
+                    <TableColumn text="Applied" prefWidth="100.0" />
+                    <TableColumn text="Stage" prefWidth="120.0" />
+                    <TableColumn text="Action" prefWidth="80.0" />
+                </columns>
+            </TableView>
+        </Tab>
+        
+    </TabPane>
+
+    <HBox alignment="CENTER_RIGHT" spacing="10.0">
+        <Button text="Close Posting" onAction="#closePosting" styleClass="button-danger" />
+        <Button text="Save Changes" onAction="#saveJobChanges" styleClass="button-primary" />
+        <Button fx:id="btnSecondaryAction" text="Close" onAction="#closeModal" styleClass="button-secondary" />
+    </HBox>
+</VBox>

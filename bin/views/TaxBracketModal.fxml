@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.HBox?>
+
+<VBox spacing="15" xmlns:fx="http://javafx.com/fxml" fx:controller="controllers.TaxBracketModalController" prefWidth="300">
+    <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+    
+    <Label text="Tax Bracket Details" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+    
+    <GridPane hgap="10" vgap="10">
+        <Label text="Min Salary:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+        <TextField fx:id="txtMinSalary" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+        
+        <Label text="Max Salary:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+        <TextField fx:id="txtMaxSalary" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+        
+        <Label text="Tax Rate (%):" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+        <TextField fx:id="txtTaxRate" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+    </GridPane>
+    
+    <HBox spacing="10" alignment="CENTER_RIGHT">
+        <Button text="Cancel" onAction="#handleCancel"/>
+        <Button text="Save" onAction="#handleSave" style="-fx-background-color: #2ecc71; -fx-text-fill: white;"/>
+    </HBox>
+</VBox>

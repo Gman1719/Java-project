@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox spacing="15.0" prefWidth="400.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.GeneratePayrollModalController">
+    <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+    
+    <Label text="Generate Monthly Payroll" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+    <Separator/>
+    
+    <GridPane hgap="10" vgap="10">
+        <Label text="Employee:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+        <TextField fx:id="txtName" editable="false" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+        
+        <Label text="Base Salary:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+        <TextField fx:id="txtBaseSalary" editable="false" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+        
+        <Label text="Allowances ($):" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+        <TextField fx:id="txtAllowances" promptText="0.00" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+        
+        <Label text="Deductions ($):" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+        <TextField fx:id="txtDeductions" promptText="0.00" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+        
+        <Label text="Month/Year:" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+        <HBox spacing="5" GridPane.rowIndex="4" GridPane.columnIndex="1">
+            <ComboBox fx:id="cmbMonth" prefWidth="100"/>
+            <TextField fx:id="txtYear" prefWidth="60" text="2026"/>
+        </HBox>
+    </GridPane>
+    
+    <Separator/>
+    <HBox spacing="10" alignment="CENTER_RIGHT">
+        <Button text="Cancel" onAction="#handleCancel" styleClass="button-secondary-mini"/>
+        <Button text="Confirm &amp; Generate" onAction="#handleGenerate" style="-fx-background-color: #27ae60; -fx-text-fill: white;"/>
+    </HBox>
+</VBox>

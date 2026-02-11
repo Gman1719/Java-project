@@ -1,0 +1,176 @@
+/* --- Root Colors and Variables --- */
+.root-pane {
+    -fx-background-color: #F4F7F9;
+    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+/* --- Sidebar Styling --- */
+.sidebar {
+    -fx-background-color: #2C3E50;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 0);
+}
+
+.sidebar-role-label {
+    -fx-text-fill: #1ABC9C;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-text-transform: uppercase;
+}
+
+.sidebar-name-label {
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+
+.nav-button, .nav-button-active {
+    -fx-background-color: transparent;
+    -fx-text-fill: #BDC3C7;
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 12 15;
+    -fx-font-size: 14px;
+    -fx-cursor: hand;
+    -fx-border-width: 0 0 0 4;
+    -fx-border-color: transparent;
+}
+
+.nav-button:hover {
+    -fx-background-color: #34495E;
+    -fx-text-fill: white;
+}
+
+.nav-button-active {
+    -fx-background-color: #34495E;
+    -fx-text-fill: white;
+    -fx-border-color: #1ABC9C;
+}
+
+.logout-button {
+    -fx-background-color: #C0392B;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+
+/* --- Main Content Area --- */
+.page-title {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2C3E50;
+}
+
+.page-subtitle {
+    -fx-font-size: 13px;
+    -fx-text-fill: #7F8C8D;
+}
+
+/* --- Summary Cards --- */
+.stat-card, .stat-card-error {
+    -fx-background-color: white;
+    -fx-padding: 20;
+    -fx-background-radius: 8;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 5, 0, 0, 2);
+}
+
+.stat-card-error {
+    -fx-border-color: #E74C3C;
+    -fx-border-width: 1;
+}
+
+.stat-label {
+    -fx-text-fill: #95A5A6;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+}
+
+.stat-value { -fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #2C3E50; }
+.stat-value-warning { -fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #F39C12; }
+.stat-value-error { -fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #C0392B; }
+.stat-value-success { -fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #27AE60; }
+
+/* --- Tables --- */
+.table-view {
+    -fx-background-color: white;
+    -fx-background-radius: 5;
+    -fx-border-color: #DCDDE1;
+}
+
+.table-view .column-header {
+    -fx-background-color: #F8F9FA;
+    -fx-text-fill: #2C3E50;
+    -fx-font-weight: bold;
+    -fx-padding: 10;
+}
+
+.table-row-cell:odd { -fx-background-color: #FCFDFF; }
+.table-row-cell:selected { -fx-background-color: #E8F4FD; }
+
+/* --- Calculation Panel --- */
+.panel-container {
+    -fx-background-color: white;
+    -fx-padding: 25;
+    -fx-background-radius: 8;
+    -fx-border-color: #DCDDE1;
+}
+
+.section-header {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2C3E50;
+    -fx-border-width: 0 0 1 0;
+    -fx-border-color: #ECF0F1;
+}
+
+.calculation-summary {
+    -fx-background-color: #F9F9F9;
+    -fx-padding: 15;
+    -fx-background-radius: 5;
+    -fx-border-color: #BDC3C7;
+    -fx-border-style: dashed;
+}
+
+.net-highlight {
+    -fx-text-fill: #27AE60;
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+}
+
+/* --- Controls & Buttons --- */
+.action-button-primary {
+    -fx-background-color: #1ABC9C;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+    -fx-padding: 8 20;
+}
+
+.operation-button {
+    -fx-background-color: #3498DB;
+    -fx-text-fill: white;
+    -fx-cursor: hand;
+}
+
+.operation-button-secure {
+    -fx-background-color: #2C3E50;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+
+.disabled-field {
+    -fx-background-color: #ECF0F1;
+    -fx-text-fill: #7F8C8D;
+}
+
+/* --- Footer --- */
+.footer-bar {
+    -fx-background-color: white;
+    -fx-border-width: 1 0 0 0;
+    -fx-border-color: #DCDDE1;
+}
+
+.audit-text {
+    -fx-text-fill: #95A5A6;
+    -fx-font-size: 11px;
+    -fx-font-style: italic;
+}

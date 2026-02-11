@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import java.net.URL?>
+
+<VBox prefHeight="700.0" prefWidth="900.0" spacing="15.0" styleClass="modal-pane" 
+      xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" 
+      fx:controller="controllers.ModalController">  <stylesheets>
+        <URL value="@/css/hr_dashboard_styles.css" />
+    </stylesheets>
+    
+    <padding>
+        <Insets top="20.0" right="20.0" bottom="20.0" left="20.0" />
+    </padding>
+
+    <Label text="Candidate Profile: Alice Johnson" styleClass="view-title" />
+    
+    <SplitPane VBox.vgrow="ALWAYS">
+        
+        <VBox spacing="15.0" prefWidth="300.0">
+            <padding><Insets all="10.0" /></padding>
+            <Label text="Contact &amp; Status" styleClass="panel-title" />
+            
+            <GridPane hgap="10.0" vgap="5.0">
+                <columnConstraints>
+                    <ColumnConstraints minWidth="100.0" />
+                    <ColumnConstraints hgrow="ALWAYS" />
+                </columnConstraints>
+                <Label text="Current Stage:" GridPane.rowIndex="0" />
+                <Label text="HR Screen" styleClass="data-highlight" GridPane.rowIndex="0" GridPane.columnIndex="1" />
+                
+                <Label text="Applied For:" GridPane.rowIndex="1" />
+                <Label text="Senior Java Developer" GridPane.rowIndex="1" GridPane.columnIndex="1" />
+                
+                <Label text="Email:" GridPane.rowIndex="2" />
+                <Label text="alice@example.com" GridPane.rowIndex="2" GridPane.columnIndex="1" />
+            </GridPane>
+            
+            <Separator />
+            
+            <Button text="📞 Schedule Interview" maxWidth="Infinity" styleClass="button-primary" />
+            <Button text="❌ Reject Candidate" maxWidth="Infinity" styleClass="button-danger" />
+            <Button text="⬇️ Download Resume" maxWidth="Infinity" styleClass="button-secondary" />
+        </VBox>
+        
+        <TabPane>
+            <Tab text="Resume/Cover Letter">
+                <TextArea editable="false" promptText="[Resume content placeholder...]" />
+            </Tab>
+            <Tab text="Notes &amp; Feedback">
+                <TextArea promptText="Add interview notes, feedback from managers, and general observations here..." />
+            </Tab>
+            <Tab text="Interview History">
+                <TableView>
+                    <columns>
+                        <TableColumn text="Date" prefWidth="150.0" />
+                        <TableColumn text="Interviewer" prefWidth="150.0" />
+                        <TableColumn text="Rating" prefWidth="80.0" />
+                        <TableColumn text="Summary" minWidth="300.0" />
+                    </columns>
+                </TableView>
+            </Tab>
+        </TabPane>
+        
+    </SplitPane>
+
+    <HBox alignment="CENTER_RIGHT">
+        <Button text="Close" onAction="#closeModal" styleClass="button-secondary" /> </HBox>
+</VBox>

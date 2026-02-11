@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.paint.Color?>
+
+<BorderPane prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #F5F5F5;" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.NotificationsController">
+
+    <!-- LEFT SIDEBAR -->
+    <left>
+        <VBox spacing="15" prefWidth="260" style="-fx-background-color: #FFFFFF; -fx-padding: 30; -fx-border-color: #E0E0E0; -fx-border-width: 0 1 0 0;">
+            <Label text="NOTIFICATION CENTER" style="-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill: #6C757D;"/>
+            
+            <Button text="All Activity" onAction="#filterAll" maxWidth="Infinity"
+                    style="-fx-background-color: #E9ECEF; -fx-text-fill: #212529; -fx-padding: 12 20; -fx-background-radius: 12; -fx-alignment: CENTER_LEFT; -fx-font-weight: bold; -fx-cursor: hand;">
+                <effect>
+                    <DropShadow color="#D1D1D1" radius="3" offsetY="1"/>
+                </effect>
+            </Button>
+
+            <Button text="Personal Alerts" onAction="#filterPersonal" maxWidth="Infinity"
+                    style="-fx-background-color: transparent; -fx-text-fill: #495057; -fx-padding: 12 20; -fx-alignment: CENTER_LEFT; -fx-cursor: hand;">
+                <effect>
+                    <DropShadow color="#E0E0E0" radius="2" offsetY="1"/>
+                </effect>
+            </Button>
+
+            <Button text="System Updates" onAction="#filterSystem" maxWidth="Infinity"
+                    style="-fx-background-color: transparent; -fx-text-fill: #495057; -fx-padding: 12 20; -fx-alignment: CENTER_LEFT; -fx-cursor: hand;">
+                <effect>
+                    <DropShadow color="#E0E0E0" radius="2" offsetY="1"/>
+                </effect>
+            </Button>
+
+            <Button text="Payroll Logs" onAction="#filterPayroll" maxWidth="Infinity"
+                    style="-fx-background-color: transparent; -fx-text-fill: #495057; -fx-padding: 12 20; -fx-alignment: CENTER_LEFT; -fx-cursor: hand;">
+                <effect>
+                    <DropShadow color="#E0E0E0" radius="2" offsetY="1"/>
+                </effect>
+            </Button>
+
+            <Region VBox.vgrow="ALWAYS"/>
+            <Separator style="-fx-opacity: 0.3;"/>
+            <Button text="Mark all as read" onAction="#markAllRead" maxWidth="Infinity"
+                    style="-fx-background-color: transparent; -fx-text-fill: #228BE6; -fx-font-weight: bold; -fx-cursor: hand;"/>
+        </VBox>
+    </left>
+
+    <!-- CENTER CONTENT -->
+    <center>
+        <VBox spacing="25" style="-fx-padding: 30;">
+            <!-- HEADER -->
+            <HBox alignment="CENTER_LEFT">
+                <VBox spacing="5">
+                    <Label text="Inbound Alerts" style="-fx-font-size: 26px; -fx-font-weight: bold; -fx-text-fill: #212529;"/>
+                    <Label fx:id="lblUnreadCount" text="Calculating..." style="-fx-font-size: 13px; -fx-text-fill: #868E96;"/>
+                </VBox>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Button text="Refresh Feed" onAction="#loadNotifications"
+                        style="-fx-background-color: #228BE6; -fx-text-fill: white; -fx-padding: 10 25; -fx-background-radius: 25; -fx-font-weight: bold; -fx-cursor: hand;">
+                    <effect>
+                        <DropShadow color="#1B6FC2" radius="5" offsetY="2"/>
+                    </effect>
+                </Button>
+            </HBox>
+
+            <!-- NOTIFICATIONS LIST -->
+            <ScrollPane fitToWidth="true" style="-fx-background-color: transparent; -fx-background: transparent; -fx-border-color: transparent;" VBox.vgrow="ALWAYS">
+                <VBox fx:id="containerNotifications" spacing="20" style="-fx-padding: 10;"/>
+            </ScrollPane>
+        </VBox>
+    </center>
+</BorderPane>

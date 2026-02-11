@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.shape.Circle?>
+<?import java.net.URL?>
+
+<BorderPane fx:id="mainBorderPane" prefHeight="900.0" prefWidth="1400.0" styleClass="root-pane" 
+            xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="controllers.PayrollOfficerController">
+
+    <stylesheets>
+        <URL value="@/css/hr_dashboard_styles.css" />
+    </stylesheets>
+
+    <left>
+        <VBox spacing="5" styleClass="sidebar-nav"> 
+            <padding>
+                <Insets top="30.0" bottom="20.0" left="15.0" right="15.0" />
+            </padding>
+            <children>
+                
+                <VBox alignment="CENTER" spacing="5.0" styleClass="profile-area">
+                    <StackPane>
+                        <Circle radius="40" styleClass="profile-circle" /> 
+                        <ImageView fx:id="imgProfile" fitWidth="60.0" fitHeight="60.0" styleClass="profile-image" />
+                    </StackPane>
+                    <Label fx:id="lblName" text="Payroll Officer" styleClass="profile-name" />
+                    <Label fx:id="lblRole" text="Accountant" styleClass="profile-role" />
+                </VBox>
+
+                <Separator styleClass="sidebar-separator" />
+                
+                <VBox alignment="TOP_LEFT" spacing="3">
+                    
+                    <Button fx:id="btnDashboard" text="💰 Payroll Dashboard" onAction="#showDashboardOverview" 
+                            maxWidth="Infinity" styleClass="nav-button, nav-button-active" />
+                    
+                    <Button fx:id="btnProcessing" text="🧾 Payroll Processing" onAction="#loadPayrollProcessing" 
+                            maxWidth="Infinity" styleClass="nav-button" />
+                            
+                    <Button fx:id="btnSalary" text="🧮 Salary Structure" onAction="#loadSalaryManagement" 
+                            maxWidth="Infinity" styleClass="nav-button" />
+                            
+                    <Button fx:id="btnRequests" text="📬 Pending Requests" onAction="#loadPayrollRequests" 
+                            maxWidth="Infinity" styleClass="nav-button" />
+                            
+                    <Button fx:id="btnReports" text="📝 Reports &amp; Compliance" onAction="#loadReportsAndCompliance" 
+                            maxWidth="Infinity" styleClass="nav-button" />
+                    
+                </VBox>
+                
+                <Region VBox.vgrow="ALWAYS" />
+                
+                <Button text="🚪 Logout" onAction="#handleLogout" maxWidth="Infinity" styleClass="nav-button, logout-button" />
+            </children>
+        </VBox>
+    </left>
+
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="20.0" styleClass="topbar">
+            <padding>
+                <Insets top="15.0" right="25.0" bottom="15.0" left="25.0" />
+            </padding>
+            <Label text="Payroll Officer Dashboard" styleClass="topbar-title" />
+            <Region HBox.hgrow="ALWAYS" />
+            
+            <Button text="Calculate Monthly Payroll" onAction="#calculatePayroll" styleClass="topbar-action-button" />
+            <Button text="Submit for Approval" onAction="#submitForApproval" styleClass="topbar-action-button, button-secondary" />
+            
+            <Button text="🔔 Alerts (3)" onAction="#openNotifications" styleClass="topbar-icon-button" />
+            
+            <MenuButton text="Settings" styleClass="topbar-icon-button">
+                <items>
+                    <MenuItem text="My Profile" onAction="#openProfile" />
+                    <MenuItem text="Change Password" onAction="#changePassword" />
+                </items>
+            </MenuButton>
+        </HBox>
+    </top>
+
+    <center>
+        <ScrollPane fitToWidth="true" styleClass="main-scroll-pane">
+            <StackPane fx:id="mainContentArea" styleClass="main-content-stack">
+                <padding>
+                    <Insets top="20.0" right="20.0" bottom="20.0" left="20.0" />
+                </padding>
+                
+                </StackPane>
+        </ScrollPane>
+    </center>
+    
+</BorderPane>

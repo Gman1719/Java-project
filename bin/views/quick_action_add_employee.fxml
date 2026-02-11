@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+
+<VBox alignment="TOP_CENTER" spacing="25.0" style="-fx-background-color: #ffffff; -fx-padding: 40; -fx-border-color: #ddd; -fx-border-radius: 8;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/21" fx:controller="controllers.HRAddEmployeeController">
+    <Label style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #1E3F66;" text="Employee Onboarding Form" />
+    <Label text="Enter core details for the new hire." style="-fx-text-fill: #555;" />
+
+    <GridPane hgap="20" vgap="15">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="120.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="250.0" />
+        </columnConstraints>
+        
+        <Label text="First Name:" style="-fx-font-weight: bold;" GridPane.rowIndex="0" GridPane.columnIndex="0" />
+        <TextField fx:id="txtFirstName" promptText="First Name" style="-fx-border-radius: 4;" GridPane.rowIndex="0" GridPane.columnIndex="1" />
+        
+        <Label text="Last Name:" style="-fx-font-weight: bold;" GridPane.rowIndex="1" GridPane.columnIndex="0" />
+        <TextField fx:id="txtLastName" promptText="Last Name" style="-fx-border-radius: 4;" GridPane.rowIndex="1" GridPane.columnIndex="1" />
+        
+        <Label text="Email (Primary):" style="-fx-font-weight: bold;" GridPane.rowIndex="2" GridPane.columnIndex="0" />
+        <TextField fx:id="txtEmail" promptText="e.g., jane.doe@company.com" style="-fx-border-radius: 4;" GridPane.rowIndex="2" GridPane.columnIndex="1" />
+        
+        <Label text="Gender:" style="-fx-font-weight: bold;" GridPane.rowIndex="3" GridPane.columnIndex="0" />
+        <ComboBox fx:id="cmbGender" prefWidth="250.0" promptText="Select Gender" style="-fx-border-radius: 4;" GridPane.rowIndex="3" GridPane.columnIndex="1">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="Male" />
+                    <String fx:value="Female" />
+                    <String fx:value="Other" />
+                </FXCollections>
+            </items>
+        </ComboBox>
+        
+        <Label text="Department:" style="-fx-font-weight: bold;" GridPane.rowIndex="4" GridPane.columnIndex="0" />
+        <ComboBox fx:id="cmbDepartment" prefWidth="250.0" promptText="Select department" style="-fx-border-radius: 4;" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+        
+        <Label text="Job Title/Designation:" style="-fx-font-weight: bold;" GridPane.rowIndex="5" GridPane.columnIndex="0" />
+        <TextField fx:id="txtJobTitle" promptText="e.g., Senior Analyst" style="-fx-border-radius: 4;" GridPane.rowIndex="5" GridPane.columnIndex="1" />
+        
+        <Label text="Hire Date:" style="-fx-font-weight: bold;" GridPane.rowIndex="6" GridPane.columnIndex="0" />
+        <DatePicker fx:id="dpHireDate" promptText="Select date" style="-fx-border-radius: 4;" GridPane.rowIndex="6" GridPane.columnIndex="1" />
+        
+        <Label text="Base Salary (Initial):" style="-fx-font-weight: bold;" GridPane.rowIndex="7" GridPane.columnIndex="0" />
+        <TextField fx:id="txtSalary" promptText="e.g., 25000.00" style="-fx-border-radius: 4;" GridPane.rowIndex="7" GridPane.columnIndex="1" />
+
+    </GridPane>
+    <Button text="Create Employee Record" onAction="#handleAddEmployee" style="-fx-background-color: #1E3F66; -fx-text-fill: white; -fx-border-radius: 4; -fx-font-size: 16px; -fx-padding: 10 20; -fx-cursor: hand;" />
+</VBox>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.String?>
+
+<ScrollPane fitToWidth="true" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="controllers.AttendanceController" style="-fx-background-color: #f1f5f9;">
+    <VBox spacing="25" style="-fx-background-color: #f1f5f9;">
+        <padding>
+            <Insets top="25" right="30" bottom="25" left="30" />
+        </padding>
+
+        <HBox alignment="CENTER_LEFT" spacing="20">
+            <VBox>
+                <Label text="Attendance &amp; Workforce" style="-fx-font-size: 26px; -fx-font-weight: bold; -fx-text-fill: #1e293b;" />
+                <Label text="Monitor daily presence (Double-click a row to edit details)" style="-fx-text-fill: #64748b; -fx-font-size: 14px;" />
+            </VBox>
+            <Pane HBox.hgrow="ALWAYS" />
+            
+            <Button text="Download Report" onAction="#onDownloadReport" 
+                    style="-fx-background-color: white; -fx-border-color: #e2e8f0; -fx-border-radius: 5; -fx-padding: 10 15; -fx-cursor: hand;" />
+            
+            <Button text="Mark Attendance" onAction="#onMarkAttendance" 
+                    style="-fx-background-color: #10b981; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 10 20; -fx-background-radius: 8; -fx-cursor: hand;" />
+        </HBox>
+
+        <GridPane hgap="20" vgap="10">
+            <columnConstraints>
+                <ColumnConstraints percentWidth="33.3" />
+                <ColumnConstraints percentWidth="33.3" />
+                <ColumnConstraints percentWidth="33.3" />
+            </columnConstraints>
+            
+            <VBox spacing="10" style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 12;" GridPane.columnIndex="0">
+                <Label text="Present Today" style="-fx-text-fill: #64748b; -fx-font-weight: bold;" />
+                <Label fx:id="lblPresentCount" text="00" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #10b981;" />
+            </VBox>
+            <VBox spacing="10" style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 12;" GridPane.columnIndex="1">
+                <Label text="On Leave" style="-fx-text-fill: #64748b; -fx-font-weight: bold;" />
+                <Label fx:id="lblLeaveCount" text="00" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #3b82f6;" />
+            </VBox>
+            <VBox spacing="10" style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 12;" GridPane.columnIndex="2">
+                <Label text="Absent" style="-fx-text-fill: #64748b; -fx-font-weight: bold;" />
+                <Label fx:id="lblAbsentCount" text="00" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #ef4444;" />
+            </VBox>
+        </GridPane>
+
+        <VBox spacing="15" style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 12;">
+            <HBox spacing="15" alignment="CENTER_LEFT">
+                <TextField fx:id="searchBar" promptText="Search employee name..." prefWidth="300" style="-fx-padding: 8;" />
+                <DatePicker fx:id="dateFilter" promptText="Select Date" />
+                <ComboBox fx:id="leaveTypeFilter" prefWidth="150" />
+                <Button text="Apply" onAction="#onFilter" style="-fx-background-color: #6366f1; -fx-text-fill: white; -fx-padding: 8 20;" />
+                <Button text="Reset" onAction="#onResetFilters" />
+            </HBox>
+
+            <TableView fx:id="attendanceTable" VBox.vgrow="ALWAYS" prefHeight="400">
+                <columns>
+                    <TableColumn fx:id="colEmployee" text="Employee" prefWidth="200" />
+                    <TableColumn fx:id="colDate" text="Date" prefWidth="120" />
+                    <TableColumn fx:id="colStatus" text="Status" prefWidth="120" />
+                    <TableColumn fx:id="colLeaveType" text="Type" prefWidth="150" />
+                    <TableColumn fx:id="colRemarks" text="Remarks" prefWidth="250" />
+                </columns>
+                <columnResizePolicy>
+                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                </columnResizePolicy>
+            </TableView>
+        </VBox>
+    </VBox>
+</ScrollPane>

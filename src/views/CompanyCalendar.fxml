@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Font?>
+
+<VBox spacing="15" style="-fx-padding: 30; -fx-background-color: #F4F7F9;" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.CompanyCalendarController">
+    <Label text="📅 Company Calendar" style="-fx-font-weight: bold; -fx-font-size: 20px; -fx-text-fill: #34495E;"/>
+    <Separator/>
+    
+    <HBox spacing="15" alignment="CENTER_LEFT">
+        <Label text="View Date:" style="-fx-font-weight: bold;"/>
+        <DatePicker fx:id="dpCalendarDate" onAction="#handleFilterAndDateChange" prefWidth="150"/> 
+        
+        <Label text="Filter by Type:" />
+        <ComboBox fx:id="cbEventTypeFilter" promptText="All Events" />
+        
+        <Region HBox.hgrow="ALWAYS"/>
+        
+        <Button text="Edit Event" fx:id="btnEditEvent" onAction="#handleEditEvent" style="-fx-background-color: #3498DB; -fx-text-fill: white;"/>
+        <Button text="Delete Event" fx:id="btnDeleteEvent" onAction="#handleDeleteEvent" style="-fx-background-color: #E74C3C; -fx-text-fill: white;"/>
+        <Button text="Add Personal Event" fx:id="btnAddEvent" onAction="#openAddEventModal" style="-fx-background-color: #1ABC9C; -fx-text-fill: white;"/>
+    </HBox>
+    
+    <TableView fx:id="tblEvents" VBox.vgrow="ALWAYS" minHeight="400" style="-fx-background-color:white; -fx-background-radius:8; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 5, 0, 0, 3);">
+        <columns>
+            <TableColumn text="Date" fx:id="colDate" prefWidth="100"/>
+            <TableColumn text="Time" fx:id="colTime" prefWidth="80"/>
+            <TableColumn text="Event" fx:id="colEvent" prefWidth="300"/>
+            <TableColumn text="Type" fx:id="colType" prefWidth="120"/>
+            <TableColumn text="Details" fx:id="colDetails" prefWidth="150"/>
+        </columns>
+        <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+        </columnResizePolicy>
+    </TableView>
+    
+    <HBox alignment="CENTER_RIGHT">
+        <Button text="Close" onAction="#handleClose" style="-fx-background-color: #ECF0F1; -fx-text-fill: #34495E;"/>
+    </HBox>
+</VBox>

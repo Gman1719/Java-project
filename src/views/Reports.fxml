@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.geometry.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controllers.ReportsController"
+            style="-fx-background-color: #f7f7f7;">
+
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="10" style="-fx-background-color:#2c3e50; -fx-padding: 15;">
+            <Label text="Analytics &amp; Reports" style="-fx-text-fill:white; -fx-font-size:20px; -fx-font-weight:bold;"/>
+            <Pane HBox.hgrow="ALWAYS"/>
+            <Button text="Export PDF" onAction="#onExportPDF"
+                    style="-fx-background-color:#6c5ce7; -fx-text-fill:white; -fx-font-weight:bold; -fx-cursor: hand;"/>
+        </HBox>
+    </top>
+
+    <center>
+        <ScrollPane fitToWidth="true" style="-fx-background-color:transparent; -fx-background: #f7f7f7;">
+            <content>
+                <VBox spacing="20" style="-fx-padding: 20;">
+                    
+                    <HBox alignment="CENTER_LEFT" spacing="20" style="-fx-background-color: white; -fx-padding: 15; -fx-background-radius: 8; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 5, 0, 0, 2);">
+                        <Label text="Report Selection:" style="-fx-font-weight: bold; -fx-text-fill: #34495e;"/>
+                        <ComboBox fx:id="reportTypeFilter" prefWidth="250" promptText="Select Report Type" />
+                        <Button text="Generate Report" onAction="#onGenerateReport"
+                                style="-fx-background-color:#00b894; -fx-text-fill:white; -fx-font-weight:bold; -fx-cursor: hand;"/>
+                    </HBox>
+
+                    <GridPane vgap="20">
+                        <columnConstraints>
+                            <ColumnConstraints percentWidth="100.0" />
+                        </columnConstraints>
+                        
+                        <rowConstraints>
+                            <RowConstraints vgrow="SOMETIMES" minHeight="300" />
+                            <RowConstraints vgrow="ALWAYS" />
+                        </rowConstraints>
+
+                        <VBox GridPane.rowIndex="0" style="-fx-background-color:white; -fx-padding:15; -fx-background-radius: 8; -fx-border-color:#ecf0f1;">
+                            <Label text="Data Visualization" style="-fx-font-weight:bold; -fx-font-size: 16px;"/>
+                            <StackPane fx:id="reportChartContainer" minHeight="250"/>
+                        </VBox>
+
+                        <VBox GridPane.rowIndex="1" spacing="10" style="-fx-background-color:white; -fx-padding:15; -fx-background-radius: 8; -fx-border-color:#ecf0f1;">
+                            <Label text="Detailed Breakdown" style="-fx-font-weight:bold; -fx-font-size: 16px;"/>
+                            <TableView fx:id="reportTable" VBox.vgrow="ALWAYS" minHeight="300">
+                                <columns>
+                                    <TableColumn fx:id="colCol1" text="Column 1" prefWidth="150"/>
+                                    <TableColumn fx:id="colCol2" text="Column 2" prefWidth="150"/>
+                                    <TableColumn fx:id="colCol3" text="Column 3" prefWidth="150"/>
+                                    <TableColumn fx:id="colCol4" text="Column 4" prefWidth="150"/>
+                                </columns>
+                                <columnResizePolicy>
+                                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                </columnResizePolicy>
+                            </TableView>
+
+                            <HBox alignment="CENTER_RIGHT" spacing="30" style="-fx-background-color: #f1f2f6; -fx-padding: 10; -fx-background-radius: 5;">
+                                <Label fx:id="lblTotalCount" text="Total Records: 0" style="-fx-font-weight: bold;"/>
+                                <Label fx:id="lblGrandTotal" text="Grand Total: $0.00" style="-fx-font-weight: bold; -fx-text-fill: #e67e22; -fx-font-size: 14px;"/>
+                            </HBox>
+                        </VBox>
+                    </GridPane>
+                </VBox>
+            </content>
+        </ScrollPane>
+    </center>
+</BorderPane>

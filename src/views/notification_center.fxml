@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import java.net.URL?>
+
+<VBox prefHeight="600.0" prefWidth="800.0" spacing="15.0" styleClass="view-container" 
+      xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" 
+      fx:controller="controllers.NotificationController">
+    
+    <stylesheets>
+        <URL value="@/css/hr_dashboard_styles.css" />
+    </stylesheets>
+    
+    <padding>
+        <Insets top="20.0" right="20.0" bottom="20.0" left="20.0" />
+    </padding>
+
+    <Label text="🔔 Notification Center" styleClass="main-title" />
+    <Separator />
+    
+    <HBox spacing="10.0" alignment="CENTER_LEFT">
+        <ComboBox promptText="Filter by Type" styleClass="combo-box-modern" />
+        <Button text="Mark All as Read" styleClass="button-secondary" />
+        <Region HBox.hgrow="ALWAYS" />
+    </HBox>
+    
+    <ListView fx:id="notificationList" VBox.vgrow="ALWAYS" />
+    
+    <HBox alignment="CENTER_RIGHT">
+        <Button text="Close" onAction="#closeWindow" styleClass="button-primary" />
+    </HBox>
+
+</VBox>

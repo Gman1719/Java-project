@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox spacing="15.0" style="-fx-background-color: #f4f4f4; -fx-padding: 20;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/21" fx:controller="controllers.HRNotificationsController">
+    <Label style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #1E3F66;" text="Notification Center" />
+    <TabPane fx:id="notificationTabPane" tabClosingPolicy="UNAVAILABLE" style="-fx-background-color: white;">
+        <tabs>
+            <Tab text="Unread (3)" fx:id="tabUnread">
+                <content>
+                    <ScrollPane fitToWidth="true">
+                        <VBox fx:id="vboxUnreadNotifications" spacing="15" style="-fx-padding: 10;">
+                            </VBox>
+                    </ScrollPane>
+                </content>
+            </Tab>
+            <Tab text="Read/Archived" fx:id="tabArchived">
+                <content>
+                    <ScrollPane fitToWidth="true">
+                        <VBox fx:id="vboxArchivedNotifications" spacing="15" style="-fx-padding: 10;">
+                            </VBox>
+                    </ScrollPane>
+                </content>
+            </Tab>
+        </tabs>
+    </TabPane>
+    <HBox alignment="CENTER_RIGHT" spacing="10">
+        <Button text="Mark All Read" onAction="#handleMarkAllRead" style="-fx-background-color: #007bff; -fx-text-fill: white; -fx-border-radius: 4; -fx-cursor: hand;" />
+    </HBox>
+</VBox>

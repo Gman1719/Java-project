@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.shape.Circle?>
+
+<BorderPane fx:id="mainBorderPane" prefHeight="850.0" prefWidth="1300.0" 
+            xmlns="http://javafx.com/javafx/21" 
+            xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="controllers.EmployeeDashboardController">
+
+    <left>
+        <VBox spacing="8" prefWidth="260" style="-fx-background-color: #2C3E50;">
+            <padding>
+                <Insets top="30" bottom="20" left="15" right="15"/>
+            </padding>
+            <children>
+                <VBox alignment="CENTER" spacing="5" style="-fx-padding: 0 0 15 0;">
+                    <StackPane>
+                        <Circle radius="45" fill="#34495E" stroke="#1ABC9C" strokeWidth="3"/>
+                        <ImageView fx:id="imgProfile" fitWidth="80" fitHeight="80" preserveRatio="true"/>
+                    </StackPane>
+                    <Label fx:id="lblName" text="Welcome" style="-fx-text-fill: white; -fx-font-size: 14; -fx-font-weight: bold;"/>
+                    <Label fx:id="lblRole" text="Employee" style="-fx-text-fill: #BDC3C7;"/>
+                </VBox>
+                <Separator style="-fx-opacity: 0.3;"/>
+                <Button text="Home" onAction="#showHome" maxWidth="Infinity"/>
+                <Button text="Attendance" onAction="#openAttendance" maxWidth="Infinity"/>
+                <Button text="Leaves" onAction="#openLeaveRequest" maxWidth="Infinity"/>
+                <Button text="Payslips" onAction="#openPayslips" maxWidth="Infinity"/>
+                <Button text="New Request" onAction="#openNewRequest" maxWidth="Infinity"/>
+                <Button text="Requests" onAction="#openRequests" maxWidth="Infinity"/>
+                <Button text="Calendar" onAction="#openCalendar" maxWidth="Infinity"/>
+                <Button text="Notifications" onAction="#openNotifications" maxWidth="Infinity"/>
+                <Button text="Profile" onAction="#openProfile" maxWidth="Infinity"/>
+                <Region VBox.vgrow="ALWAYS"/>
+                <Button text="Logout" onAction="#handleLogout" maxWidth="Infinity" style="-fx-background-color: #E74C3C; -fx-text-fill: white;"/>
+            </children>
+        </VBox>
+    </left>
+
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="10" style="-fx-background-color: #ECF0F1; -fx-padding: 10;">
+            <Label text="Employee Portal" style="-fx-font-size: 18; -fx-font-weight: bold;"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <MenuButton text="Settings">
+                <items>
+                    <MenuItem text="Edit Profile" onAction="#openProfile"/>
+                    <MenuItem text="Change Password" onAction="#changePassword"/>
+                </items>
+            </MenuButton>
+        </HBox>
+    </top>
+
+    <center>
+        <ScrollPane fx:id="centerScrollPane" fitToWidth="true" style="-fx-background-color: transparent;">
+            <content>
+                <VBox fx:id="mainContent" spacing="20" style="-fx-padding: 20;">
+                    
+                    <HBox spacing="20">
+                        <VBox prefWidth="300" style="-fx-background-color: white; -fx-padding: 15; -fx-border-color: #DCDCDC; -fx-border-radius: 5;" HBox.hgrow="ALWAYS">
+                            <Label text="Net Salary"/>
+                            <Label fx:id="lblNetSalary" text="0.00" style="-fx-font-size: 20; -fx-font-weight: bold;"/>
+                            <Button text="Download PDF" onAction="#downloadPayslip"/>
+                        </VBox>
+                        
+                        <VBox prefWidth="300" style="-fx-background-color: white; -fx-padding: 15; -fx-border-color: #DCDCDC; -fx-border-radius: 5;" HBox.hgrow="ALWAYS">
+                            <Label text="Leave Balance"/>
+                            <Label fx:id="lblAvailableLeaves" text="0 Days" style="-fx-font-size: 20; -fx-font-weight: bold;"/>
+                            <Button text="Request Leave" onAction="#openLeaveRequest"/>
+                        </VBox>
+
+                        <VBox prefWidth="300" style="-fx-background-color: white; -fx-padding: 15; -fx-border-color: #DCDCDC; -fx-border-radius: 5;" HBox.hgrow="ALWAYS">
+                            <Label text="Pay Day"/>
+                            <Label fx:id="lblPayDay" text="TBD" style="-fx-font-size: 20; -fx-font-weight: bold;"/>
+                            <Button text="Calendar" onAction="#openCalendar"/>
+                        </VBox>
+                    </HBox>
+
+                    <TabPane fx:id="historyTabPane" tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
+                        <tabs>
+                            <Tab text="Attendance">
+                                <VBox spacing="10" style="-fx-padding: 10;">
+                                    <HBox spacing="10" alignment="CENTER_LEFT">
+                                        <DatePicker fx:id="dpAttendanceMonth"/>
+                                        <Button text="Load Attendance" onAction="#loadAttendanceData"/>
+                                    </HBox>
+                                    <TableView fx:id="tblAttendance" minHeight="500" VBox.vgrow="ALWAYS"/>
+                                </VBox>
+                            </Tab>
+                            <Tab text="Leaves">
+                                <TableView fx:id="tblLeaveRequests" minHeight="500" VBox.vgrow="ALWAYS"/>
+                            </Tab>
+                            <Tab text="Other Requests">
+                                <TableView fx:id="tblOtherRequests" minHeight="500" VBox.vgrow="ALWAYS"/>
+                            </Tab>
+                        </tabs>
+                    </TabPane>
+                </VBox>
+            </content>
+        </ScrollPane>
+    </center>
+</BorderPane>

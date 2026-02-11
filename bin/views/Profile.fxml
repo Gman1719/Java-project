@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.geometry.Insets?>
+
+<ScrollPane fitToWidth="true" hbarPolicy="NEVER" vbarPolicy="AS_NEEDED" 
+            prefWidth="650.0" prefHeight="700.0" 
+            style="-fx-background-color: transparent; -fx-background: #f4f7f6;" 
+            xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="controllers.ProfileModalController">
+    
+    <content>
+        <VBox spacing="0" style="-fx-background-color: #f4f7f6;">
+            <children>
+                <AnchorPane prefHeight="140.0" style="-fx-background-color: #3498db;">
+                    <children>
+                        <VBox alignment="CENTER" layoutX="245.0" layoutY="30.0" spacing="10">
+                            <children>
+                                <StackPane>
+                                    <children>
+                                        <Circle fx:id="imgContainer" radius="60.0" fill="WHITE" stroke="#ffffff" strokeWidth="3" />
+                                        <ImageView fx:id="profileImageView" fitHeight="110.0" fitWidth="110.0" pickOnBounds="true" preserveRatio="true">
+                                            <clip>
+                                                <Circle radius="55.0" centerX="55.0" centerY="55.0" />
+                                            </clip>
+                                        </ImageView>
+                                    </children>
+                                </StackPane>
+                                <Button fx:id="btnUpload" text="Change Photo" onAction="#handleUploadPhoto" 
+                                        style="-fx-background-color: #2ecc71; -fx-text-fill: white; -fx-font-size: 11px; -fx-background-radius: 15; -fx-cursor: hand;"/>
+                            </children>
+                        </VBox>
+                    </children>
+                </AnchorPane>
+
+                <GridPane vgap="20" hgap="20" style="-fx-padding: 40 40 30 40;">
+                    <columnConstraints>
+                        <ColumnConstraints percentWidth="50"/>
+                        <ColumnConstraints percentWidth="50"/>
+                    </columnConstraints>
+                    
+                    <children>
+                        <VBox spacing="5" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                            <Label text="Full Name" style="-fx-font-weight: bold; -fx-text-fill: #34495e;"/>
+                            <TextField fx:id="txtFullName" promptText="Enter Full Name" prefHeight="40.0" style="-fx-background-radius: 5;"/>
+                        </VBox>
+                        
+                        <VBox spacing="5" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                            <Label text="Username" style="-fx-font-weight: bold; -fx-text-fill: #34495e;"/>
+                            <TextField fx:id="txtUsername" editable="false" prefHeight="40.0" style="-fx-background-color: #e9ecef; -fx-background-radius: 5;"/>
+                        </VBox>
+                        
+                        <VBox spacing="5" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                            <Label text="Email Address" style="-fx-font-weight: bold; -fx-text-fill: #34495e;"/>
+                            <TextField fx:id="txtEmail" promptText="example@mail.com" prefHeight="40.0" style="-fx-background-radius: 5;"/>
+                        </VBox>
+                        
+                        <VBox spacing="5" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                            <Label text="Phone Number" style="-fx-font-weight: bold; -fx-text-fill: #34495e;"/>
+                            <TextField fx:id="txtPhone" promptText="+1 234 567 890" prefHeight="40.0" style="-fx-background-radius: 5;"/>
+                        </VBox>
+                        
+                        <VBox spacing="5" GridPane.columnSpan="2" GridPane.rowIndex="2">
+                            <Label text="Home Address" style="-fx-font-weight: bold; -fx-text-fill: #34495e;"/>
+                            <TextArea fx:id="txtAddress" prefHeight="100.0" wrapText="true" style="-fx-background-radius: 5;"/>
+                        </VBox>
+                    </children>
+                </GridPane>
+
+                <HBox alignment="CENTER_RIGHT" spacing="20" style="-fx-padding: 20 40 40 40;">
+                    <Button text="Close" onAction="#handleClose" 
+                            style="-fx-background-color: transparent; -fx-text-fill: #95a5a6; -fx-font-size: 14px; -fx-cursor: hand;"/>
+                    
+                    <Button fx:id="btnAction" text="Edit Profile" onAction="#handleToggleEdit" 
+                            style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-padding: 12 40; -fx-background-radius: 8; -fx-font-weight: bold; -fx-font-size: 14px; -fx-cursor: hand;"/>
+                </HBox>
+            </children>
+        </VBox>
+    </content>
+</ScrollPane>
